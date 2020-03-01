@@ -4,7 +4,7 @@ PROJECT_NAME="twanluttik"
 npm run build
 
 # remove all the contents in the www folder
-rm -rf /var/www/$PROJECT_NAME/*
+rm -rf /var/www/$PROJECT_NAME
 
 # Create contents folder if not exist
 mkdir /var/www/$PROJECT_NAME
