@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <navbar/>
-    <router-view/>
+    <router-view class="router-view-container"/>
   </div>
 </template>
 
@@ -26,7 +26,14 @@ export default {
   text-align: center;
   background: black;
   color: white;
-   height: 100%;
+  height: 100%;
+
+  .router-view-container {
+    @media only screen and (min-width: 1200px) {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+  }
 }
 
 

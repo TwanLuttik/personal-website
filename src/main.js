@@ -4,6 +4,8 @@ import router from './router'
 
 Vue.config.productionTip = false
 
+document.title = 'Twan Luttik'
+
 new Vue({
   router,
   render: h => h(App)
