@@ -1,18 +1,17 @@
 <template>
   <div id="app">
-    <navbar/>
+    <sidebar/>
     <router-view class="router-view-container"/>
   </div>
 </template>
 
 <script>
-import navbar from './parts/navbar';
+import sidebar from './parts/sidebar';
 
 export default {
   components: {
-    navbar
+    sidebar
   }
-  
 }
 </script>
 
@@ -24,16 +23,23 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  background: black;
-  color: white;
+  font-weight: bold;
+  letter-spacing: 0.4px;
+  font-size: 18px;
+  color: #26272B;
   height: 100%;
-
+  display: flex;
+  
   .router-view-container {
+    padding-top: 20px;
+  }
+
+  /* .router-view-container {
     @media only screen and (min-width: 1200px) {
       max-width: 1200px;
       margin: 0 auto;
     }
-  }
+  } */
 }
 
 

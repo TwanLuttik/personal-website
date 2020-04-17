@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import home from '../screens/home/home';
 import projects from '../screens/projects/projects';
-import about from '../screens/about/about';
+// import about from '../screens/about/about';
 
 Vue.use(VueRouter)
 
@@ -14,14 +14,14 @@ const routes = [
   },
   {
     path: '/projects',
-    name: 'projects',
+    name: 'Projects',
     component: projects
   },
-  {
-    path: '/about',
-    name: 'about',
-    component: about
-  },
+  // {
+  //   path: '/about',
+  //   name: 'about',
+  //   component: about
+  // },
   {
     path: '*',
     component: home
