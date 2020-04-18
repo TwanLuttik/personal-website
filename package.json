@@ -6,10 +6,11 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "icons": "cd ./src/Icons && node generate.js"
+    "icons": "node generate.js"
   },
   "dependencies": {
     "core-js": "^3.6.4",
+    "fb-watchman": "^2.0.1",
     "node-sass": "^4.13.1",
     "pulse-framework": "^2.2.6",
     "sass-loader": "^8.0.2",
@@ -24,6 +25,7 @@
     "babel-eslint": "^10.0.3",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.1.2",
+    "prettier": "^2.0.4",
     "vue-template-compiler": "^2.6.11"
   }
 }

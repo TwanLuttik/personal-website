@@ -1,18 +1,17 @@
 <template>
   <div id="sidebar">
     <p class="title" @click="$current_tab = 'projects'">Twan Luttik</p>
-    <br>
-    
-    <p 
-      class="sub" 
-      v-for="(item, index) in tabs" 
-      :key="index" 
-      :class="{ 'active': current_tab === item.route }" 
-      @click="$router.push(item.route)" 
+    <br />
+
+    <p
+      class="sub"
+      v-for="(item, index) in tabs"
+      :key="index"
+      :class="{ active: current_tab === item.route }"
+      @click="$router.push(item.route)"
     >
       {{ item.name }}
     </p>
-    
   </div>
 </template>
 
@@ -21,22 +20,21 @@ export default {
   data() {
     return {
       ...this.mapData({
-        current_tab: 'base/current_tab'
+        current_tab: "base/current_tab",
       }),
-      tabs:[
+      tabs: [
         {
-          name: 'Home',
-          route: ''
+          name: "Home",
+          route: "",
         },
         {
-          name: 'Projects',
-          route: 'projects'
-        }
-      ]
-    }
-  }
-
-}
+          name: "Projects",
+          route: "projects",
+        },
+      ],
+    };
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -44,7 +42,7 @@ export default {
   display: flex;
   flex-direction: column;
   text-align: left;
-  background: #26272B;
+  background: #26272b;
   color: rgb(233, 233, 233);
   height: 100%;
   width: 300px;
@@ -63,7 +61,7 @@ export default {
     padding: 5px 0;
     padding-left: 10px;
     font-size: 16px;
-    transition: color .2s ease;
+    transition: color 0.2s ease;
     &:hover {
       color: rgb(233, 233, 233);
     }
@@ -71,7 +69,5 @@ export default {
   .active {
     color: rgb(233, 233, 233);
   }
-
- 
 }
 </style>

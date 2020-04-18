@@ -1,20 +1,20 @@
 <template>
   <div id="Home">
-    <Icon name="github" />
-    <Icon name="linkedin"/>
+    <Icon class="icon" name="github" />
+    <Icon class="icon" name="linkedin" />
     <!-- <Icon /> -->
   </div>
 </template>
 
 <script>
-export default {
-}
+export default {};
 </script>
 
 <style lang="scss" scoped>
 #Home {
   display: flex;
   justify-content: center;
+  padding-top: 20px;  
   button {
     margin: 10px;
     border-radius: 3px;
@@ -32,5 +32,15 @@ export default {
     height: 40px;
     width: 40px;
   }
+  .icon {
+    height: fit-content;
+
+    transition: opacity 0.2s ease;
+    &:hover {
+      cursor: pointer;
+      opacity: 0.5;
+    }
+  }
 }
+// color: #0077b5;
 </style>

@@ -1,35 +1,34 @@
 <template>
   <div id="app">
-    <sidebar/>
-    <router-view class="router-view-container"/>
+    <sidebar />
+    <router-view class="router-view-container" />
   </div>
 </template>
 
 <script>
-import sidebar from './parts/sidebar';
+import sidebar from "./parts/sidebar";
 
 export default {
   components: {
-    sidebar
-  }
-}
+    sidebar,
+  },
+};
 </script>
 
-
 <style lang="scss">
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap");
 #app {
-  font-family: 'Source Sans Pro', Arial, sans-serif;
+  font-family: "Source Sans Pro", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   font-weight: bold;
   letter-spacing: 0.4px;
   font-size: 18px;
-  color: #26272B;
+  color: #26272b;
   height: 100%;
   display: flex;
-  
+
   .router-view-container {
     padding-top: 20px;
   }
@@ -42,7 +41,6 @@ export default {
   } */
 }
 
-
 * {
   margin: 0;
   padding: 0;
@@ -52,6 +50,4 @@ html,
 body {
   height: 100%;
 }
-
-
 </style>
