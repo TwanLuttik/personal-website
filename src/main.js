@@ -8,8 +8,9 @@ Vue.config.productionTip = false
 
 document.title = 'Twan'
 
-const pulse = require('./core/core.js');
-Vue.use(pulse)
+
+import pulse from './core/core';
+Vue.use(pulse);
 
 import Icon from './Icons/Icon.vue';
 Vue.component('Icon', Icon);

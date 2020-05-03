@@ -3,7 +3,7 @@
  */
 const fs = require("fs");
 
-const ROOT_FOLDER = `./src/parts/Icon`;
+const ROOT_FOLDER = `./src/Icons`;
 const SVG_FOLDER = `./src/assets/svg`;
 const OUTPUT_FOLDER = `${ROOT_FOLDER}/GeneratedIcons`;
 
@@ -13,7 +13,7 @@ let imports = "";
 let components = "";
 
 (async function () {
-  console.log("dsa");
+  
   // Get all the svg's
   let icons = await fs.readdirSync(SVG_FOLDER);
 
@@ -41,7 +41,7 @@ let components = "";
     components = components + icon_item.split(".vue")[0] + ",";
 
     // imports string builder
-    imports = imports + `import ${icon_item.replace(".vue", "")} from '${OUTPUT_FOLDER}/${icon_item}';`;
+    imports = imports + `import ${icon_item.replace(".vue", "")} from './GeneratedIcons/${icon_item}';`;
   }
 
   // `build the new icon template
