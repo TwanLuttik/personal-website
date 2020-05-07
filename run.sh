@@ -1,7 +1,9 @@
 PROJECT_NAME="twanluttik"
 
+yarn
+
 # run build
-npm run build
+yarn build
 
 # remove all the contents in the www folder
 rm -rf /var/www/$PROJECT_NAME
