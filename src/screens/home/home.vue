@@ -5,10 +5,14 @@
       <div class="box">
         <img class="profile" src="../../assets/img/profile-tl.png" >
         <p>Twan Luttik</p>
-        <Icon name="github"/>
-        <Icon name="gitlab"/>
-        <Icon name="instagram"/>
-        <Icon name="linkedin"/>
+
+        <div style="display:flex;justify-content:center;padding-top:10px;">
+          <Icon class="icon" name="github"/>
+          <Icon class="icon" name="gitlab"/>
+          <Icon class="icon" name="instagram"/>
+          <Icon class="icon" name="linkedin"/>
+        </div>
+        
       </div>
     </div>
 
@@ -54,6 +58,10 @@ export default {
       border-radius: 50px;
       height: 50px;
       width: 50px;
+    }
+
+    .icon {
+      margin: 5px;
     }
   }
 

@@ -18,7 +18,7 @@ let components = "";
   console.clear();
 
   // Initizials WatchMan
-  chokidar
+  await chokidar
     .watch(path.resolve(SVG_FOLDER), {
       persistent: true,
       ignored: /(^|[\/\\])\../, // ignore dotfiles
@@ -47,6 +47,11 @@ let components = "";
 
 
 async function run() {
+  // Clear the variables before starting
+  imports = '';
+  components =  '';
+
+  // Console log
   console.log('Converting svg into vue svg components\n\n')
   
   // Get all the svg's
@@ -54,13 +59,15 @@ async function run() {
 
   // Filter only for .svg extenstions
   icons = icons.filter((item) => item.includes(".svg"));
-
   // Loop trough the svg files
-  for (let icon_item of icons) {
+
+  for await (let icon_item of icons) {
+
     // Read the icon
     let icon = await fs.readFileSync(`${SVG_FOLDER}/${icon_item}`, { encoding: "utf8" });
 
-    icon = icon.replace('class=""', "");
+    icon = await validateSVG(icon);
+    // icon.replace('class=""', "");
 
     // Change extension from .svg to .vue
     icon_item = icon_item.replace(".svg", ".vue");
@@ -92,3 +99,8 @@ async function run() {
   console.log(`\n🌟 Generated ${icons.length + 1} files;\n\n`);
   console.log(`Ready - ${new Date().toLocaleString()}`)
 };
+
+
+function validateSVG(icon) {
+  return icon.replace('class=""', "");
+}
