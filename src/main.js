@@ -15,6 +15,9 @@ Vue.use(pulse);
 import Icon from './Icons/Icon.vue';
 Vue.component('Icon', Icon);
 
+import SquarIcon from './parts/root/SquarIcon.vue';
+Vue.component('SquarIcon', SquarIcon);
+
 
 new Vue({
   router,

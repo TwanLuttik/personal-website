@@ -1,15 +1,13 @@
 <template>
   <div id="app">
-    <Header />
+    <!-- <Header /> -->
     <router-view class="router-view-container" />
   </div>
 </template>
 
 <script>
-import Header from './parts/Header';
 
 export default {
-  components: { Header },
   data() {
     return {
       ...this.mapData({
@@ -47,37 +45,15 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  /* font-weight: bold; */
-  /* letter-spacing: 0.4px; */
   font-size: 18px;
-  /* background: var(--terminal-background); */
   background: #ffffff;
-  background-image: url('./assets/img/b2.jpg');
-  /* backgrounrgb(216, 216, 216)99,96,231); */
-  /* background: linear-gradient(147deg, rgba(99,96,231,1) 0%, rgba(199,95,207,1) 100%); */
   height: 100%;
   display: flex;
   flex-direction: column;
-
+  font-weight: bold;
+  letter-spacing: 0.14px;
 
   .router-view-container {
-    /* background: rgb(252, 252, 252);
-    border: solid 1px rgb(240, 240, 240); */
-    /* height: 100%; */
-    /* display: flex;
-    justify-content: center;
-    overflow-y: scroll;
-    background-image: url('./assets/img/background.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center; */
-   /* backdrop-filter: blur(2px); */ 
-   /* filter: blur(3px); */
-    
-    /* @media only screen and (min-width: 1200px) {
-      max-width: 1200px;
-      margin: 0 auto;
-    } */
   }
 }
 
