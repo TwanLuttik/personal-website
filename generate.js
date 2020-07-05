@@ -1,5 +1,5 @@
 /**
- * This script will convert svg into vue files, Creates an Icon.vue component
+ * This script will convert svg into vue files and creates an Icon.vue as root component
  */
 const fs = require('fs');
 const path = require('path');
@@ -9,8 +9,9 @@ const { exit } = require('process');
 const ROOT_FOLDER = `./src/Icons`;
 const SVG_FOLDER = `./src/assets/svg`;
 const OUTPUT_FOLDER = `${ROOT_FOLDER}/GeneratedIcons`;
+
 const ICON_TEMPLATE =
-  `<template><div id="Icon"><component :style="{ height: size + 'px', width: size + 'px' }" class="img" :is="name" v-if="name"></component></div></template><script>const PATH = "./GeneratedIcons"; <<imports>> export default{props:["name", "size"],components:{<<components>>},data() {return {}}}</script><style lang="scss" scoped>#Icon{.img{height:40px;width:40px;}}</style>`
+  `<template><div id="Icon"><component :style="{ height: size + 'px', width: size + 'px' }" class="img" :is="name" v-if="name"></component></div></template><script>const PATH = "./GeneratedIcons"; <<imports>> export default{props:["name", "size"],components:{<<components>>},data() {return {}}}</script><style lang="scss" scoped>#Icon{display: flex;}</style>`
 let imports = "";
 let components = "";
 
