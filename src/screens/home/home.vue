@@ -69,7 +69,6 @@ export default {
   },
   methods: {
     openLink(url) {
-      console.log('dsadsa');
       window.open(url, 'x')
     }
   }
