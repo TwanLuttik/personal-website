@@ -1,15 +1,18 @@
 <template>
   <div class="infoBox">
-    <p class="title" v-if="title">{{title}}:</p>
-    <p v-if="desc">{{desc}}</p>
-    <Icon size="30" :name="icon" v-if="icon"/>
+    <Icon size="20" :name="icon" v-if="icon" iconColor="#414358"/>
+    <div v-if="icon && title" style="width: 8px"/>
+    <p v-if="title" class="title">{{title}}</p>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['title', 'desc', 'icon']
-
+  props: ['title', 'desc', 'icon'],
+  mounted() {
+    console.log(this.icon);
+    
+  }
 }
 </script>
 
@@ -17,27 +20,24 @@ export default {
 .infoBox {
   display: flex;
   align-items: center;
-  flex-direction: flex;
   padding: 10px;
   background-color: #F2F2FA;
   width: fit-content;
   border-radius: 22px;
-  margin: 20px 0;
-
-  .title {
-    text-align: left;
-  }
-
-  /* .icon {
-    height: 20px;
-    width: 20px;
-  } */
+  margin: 10px 5px;
 
 
   transition: transform .2s ease;
   &:hover {
     cursor: pointer;
-    transform: scale(1.05);
+    transform: scale(1.1);
+  }
+  &:active {
+    cursor: pointer;
+    transform: scale(1.2);
+  }
+  .title {
+    user-select: none;
   }
 }
 </style>

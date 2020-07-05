@@ -2,47 +2,55 @@
   <div id="home">
 
     <div class="container">
-      <infoBox
-        title="Name"
-        desc="Twan Luttik"
-      />
+      
+      <h1>Twan Luttik</h1>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+
+      <h3>Social Media</h3>
+      <div class="flex-row">
+        <infoBox
+          icon="twitter"
+          @click.native="openLink('https://twitter.com/TwanLuttik')"
+          @mouseenter.native="hoverMouse = 'Twitter'"
+          @mouseleave.native="hoverMouse = null"
+        />
+
+        <infoBox
+          icon="github"
+          @click.native="openLink('https://github.com/TwanLuttik')"
+          @mouseenter.native="hoverMouse = 'Github'"
+          @mouseleave.native="hoverMouse = ''"
+        />
+
+        <infoBox
+          icon="linkedin"
+          @click.native="openLink('https://www.linkedin.com/in/twanluttik/')"
+          @mouseenter.native="hoverMouse = 'LinkedIn'"
+          @mouseleave.native="hoverMouse = ''"
+        />
+
+      </div>
 
       <div class="Line"/>
-      <h3>Social Media</h3>
+
+      <h3>Projects</h3>
 
       <infoBox
-        icon="twitter"
-        @click.native="openLink('https://twitter.com/TwanLuttik')"
+        icon="trophy"
+        title="Secret"
       />
 
       <infoBox
-        icon="github"
-        @click.native="openLink('https://github.com/TwanLuttik')"
+        title="upsidedownstein"
+        @click.native="openLink('https://upsidedownstein.com')"
       />
-
-      <infoBox
-        icon="linkedin"
-        @click.native="openLink('https://www.linkedin.com/in/twanluttik/')"
-      />
-      
-
 
 
     </div>
-
-
-    <!-- <div class="container">
-      <div class="box">
-        <img class="profile" src="../../assets/img/profile-tl.png" >
-        <p>Twan Luttik</p>
-        <div style="display:flex;justify-content:center;padding-top:10px;">
-          <Icon class="icon" name="github" :size="30"/>
-          <Icon class="icon" name="gitlab"/>
-          <Icon class="icon" name="instagram"/>
-          <Icon class="icon" name="linkedin"/>
-        </div>
-      </div>
-    </div> -->
 
   </div>
 </template>
@@ -55,7 +63,7 @@ export default {
   },
   data() {
     return {
-      test: false
+      hoverMouse: ''
     }
   },
   methods: {
@@ -69,6 +77,10 @@ export default {
 
 <style lang="scss" scoped>
 #home {
+  /* transition: all .2s ease-in-out;
+  .showText {
+    transition: all .2s;
+  } */
   // display: flex;
   // align-items: center;
 }
@@ -78,6 +90,9 @@ export default {
   margin-top: 50px;
   width: fit-content;
   border-radius: 11px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   
   
   .box {
@@ -95,6 +110,18 @@ export default {
     .icon {
       margin: 5px;
     }
+  }
+
+  .fade-enter-active {
+    transition: opacity .1s ease-in-out;
+  }
+  .fade-leave-active {
+    transition: opacity .5s ease-in-out;
+  }
+
+  .fade-enter,
+  .fade-leave-to {
+    opacity: 0;
   }
 
   

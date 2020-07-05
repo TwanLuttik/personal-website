@@ -65,4 +65,13 @@ html,
 body {
   height: 100%;
 }
+
+
+.flex-row {
+  display:flex;flex-direction:row;
+}
+
+.flex-column {
+  display:flex;flex-direction:column;
+}
 </style>
