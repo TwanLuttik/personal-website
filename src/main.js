@@ -2,13 +2,6 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 
-
-
-Vue.config.productionTip = false
-
-document.title = 'Twan'
-
-
 import pulse from './core/core';
 Vue.use(pulse);
 
@@ -18,6 +11,9 @@ Vue.component('Icon', Icon);
 import SquarIcon from './parts/root/SquarIcon.vue';
 Vue.component('SquarIcon', SquarIcon);
 
+
+Vue.config.productionTip = false
+document.title = 'Twan'
 
 new Vue({
   router,
