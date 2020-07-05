@@ -1,16 +1,15 @@
-<template>
+  <template>
   <div id="home">
 
     <div class="container">
       
-      <h1>Twan Luttik</h1>
+      <h1 class="logo-title-text">Twan Luttik</h1>
       <br>
       <br>
       <br>
+        <!-- <div class="Line"/> -->
+      <h2>Social Media</h2>
       <br>
-      <br>
-
-      <h3>Social Media</h3>
       <div class="flex-row">
         <infoBox
           icon="twitter"
@@ -35,9 +34,11 @@
 
       </div>
 
-      <div class="Line"/>
-
-      <h3>Projects</h3>
+      <!-- <div class="Line"/> -->
+      <br>
+      <br>
+      <h2>Projects</h2>
+      <br>
 
       <infoBox
         icon="trophy"
@@ -45,7 +46,7 @@
       />
 
       <infoBox
-        title="upsidedownstein"
+        title="upsidedownstein.com"
         @click.native="openLink('https://upsidedownstein.com')"
       />
 
@@ -89,6 +90,7 @@ export default {
   margin: 0 auto;
   margin-top: 50px;
   width: fit-content;
+  min-width: 300px;
   border-radius: 11px;
   display: flex;
   flex-direction: column;
@@ -129,9 +131,20 @@ export default {
 
 .Line {
   background-color: #F2F2FA;
-  height: 3px;
+  height: 5px;
   border-radius: 10px;
   margin: 35px 0;
   width: 100%;
+  margin-bottom: 25px;
+}
+h2 {
+  opacity: 0.7;
+}
+
+.logo-title-text {
+  background-color: #f2f2fa;
+  color: #424358;
+  border-radius: 15px;
+  padding: 10px 20px;
 }
 </style>
