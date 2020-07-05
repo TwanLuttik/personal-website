@@ -2,7 +2,7 @@
   <div class="infoBox">
     <p class="title" v-if="title">{{title}}:</p>
     <p v-if="desc">{{desc}}</p>
-    <Icon size="5" name="github"/>
+    <Icon size="30" :name="icon" v-if="icon"/>
   </div>
 </template>
 
@@ -20,12 +20,11 @@ export default {
   flex-direction: flex;
   padding: 10px;
   background-color: #F2F2FA;
-  min-width: 350px;
+  width: fit-content;
   border-radius: 22px;
   margin: 20px 0;
 
   .title {
-    min-width: 140px;
     text-align: left;
   }
 

@@ -11,19 +11,17 @@
       <h3>Social Media</h3>
 
       <infoBox
-        icon=""
+        icon="twitter"
         @click.native="openLink('https://twitter.com/TwanLuttik')"
       />
 
       <infoBox
-        title="GitHub"
-        desc="TwanLuttik"
+        icon="github"
         @click.native="openLink('https://github.com/TwanLuttik')"
       />
 
       <infoBox
-        title="LinkedIn"
-        desc="twanluttik"
+        icon="linkedin"
         @click.native="openLink('https://www.linkedin.com/in/twanluttik/')"
       />
       
@@ -84,7 +82,7 @@ export default {
   
   .box {
     padding: 10px;
-    min-width: 270px;
+    /* min-width: 270px; */
    
     .profile {
       border-radius: 18px;
