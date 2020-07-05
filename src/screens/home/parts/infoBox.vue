@@ -8,11 +8,7 @@
 
 <script>
 export default {
-  props: ['title', 'desc', 'icon'],
-  mounted() {
-    console.log(this.icon);
-    
-  }
+  props: ['title', 'desc', 'icon']
 }
 </script>
 
