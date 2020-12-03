@@ -5,10 +5,10 @@ yarn
 yarn build
 
 # Remove the folder
-rm -rf /var/www/$PROJECT_NAME
+rm -rf /var/www/twanluttik
 
 # Create folder
-mkdir /var/www/$PROJECT_NAME
+mkdir /var/www/twanluttik
 
 # copy build to prod
-cp -r ./build/* /var/www/$PROJECT_NAME/
+cp -r ./build/* /var/www/twanluttik/
