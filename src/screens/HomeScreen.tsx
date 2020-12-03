@@ -27,7 +27,7 @@ export const HomeScreen: React.FunctionComponent<HomeScreenProps> = (props) => {
         </Row>
         <Spacer amount={2} />
         <Row>
-          <Bold>Work status:</Bold>
+          <Bold>Side project status:</Bold>
           <Spacer amount={5} />
 
           <P>cheapestkeys.com</P>
@@ -87,6 +87,6 @@ const P = styled.p`
 `;
 
 const Bold = styled.p`
-  font-weight: 600;
+  font-weight: 700;
   text-align: center;
 `;
