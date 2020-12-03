@@ -30,7 +30,7 @@ export const HomeScreen: React.FunctionComponent<HomeScreenProps> = (props) => {
           <Bold>Work status:</Bold>
           <Spacer amount={5} />
 
-          <P>Side project staus: Cheapestkeys</P>
+          <P>cheapestkeys.com</P>
         </Row>
       </Bio>
       <Spacer amount={50} />
