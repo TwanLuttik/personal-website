@@ -23,14 +23,18 @@ export const HomeScreen: React.FunctionComponent<HomeScreenProps> = (props) => {
         <Row>
           <Bold>Work status:</Bold>
           <Spacer amount={5} />
-          <P> Notify Technology, Inc</P>
+          <Link color="#385BFF" onClick={() => go('https://notify.me')}>
+            Notify Technology, Inc
+          </Link>
         </Row>
         <Spacer amount={2} />
         <Row>
           <Bold>Side project status:</Bold>
           <Spacer amount={5} />
 
-          <P>cheapestkeys.com</P>
+          <Link color="#5bc452" onClick={() => go('https://cheapestkeys.com')}>
+            cheapestkeys.com
+          </Link>
         </Row>
       </Bio>
       <Spacer amount={50} />
@@ -46,6 +50,18 @@ export const HomeScreen: React.FunctionComponent<HomeScreenProps> = (props) => {
         <IconButton
           onClick={() => go('https://twitter.com/TwanLuttik')}
           name="twitter"
+          size={ICON_SIZE}
+          color="white"
+        />
+        <IconButton
+          onClick={() => go('https://notify.me/twan')}
+          name="notify"
+          size={ICON_SIZE}
+          color="white"
+        />
+        <IconButton
+          onClick={() => go('https://www.instagram.com/twanluttik/')}
+          name="instagram"
           size={ICON_SIZE}
           color="white"
         />
@@ -86,7 +102,21 @@ const P = styled.p`
   text-align: center;
 `;
 
+const Link = styled(P)<{ color: string }>`
+  cursor: pointer;
+  padding: 2px;
+
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  &:hover {
+    /* color: ${(v) => v.color}; */
+    background-color: ${(v) => v.color};
+    color: black;
+  }
+`;
+
 const Bold = styled.p`
   font-weight: 700;
   text-align: center;
+  padding: 2px;
+  padding-right: 0px;
 `;
