@@ -1,15 +1,14 @@
-PROJECT_NAME="twanluttik"
-
+# Install packages
 yarn
 
-# run build
+# Build
 yarn build
 
-# remove all the contents in the www folder
-rm -rf /var/www/$PROJECT_NAME
+# Remove the folder
+rm -rf /var/www/twanluttik
 
-# Create contents folder if not exist
-mkdir /var/www/$PROJECT_NAME
+# Create folder
+mkdir /var/www/twanluttik
 
-# move the dist to the contents folder
-mv -f dist/* /var/www/$PROJECT_NAME/
+# copy build to prod
+cp -r ./build/* /var/www/twanluttik/
