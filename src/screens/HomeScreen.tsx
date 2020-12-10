@@ -37,6 +37,16 @@ export const HomeScreen: React.FunctionComponent<HomeScreenProps> = (props) => {
           </Link>
         </Row>
       </Bio>
+      <Spacer amount={20} />
+
+      <Container>
+        <h3 style={{ textAlign: 'center', fontSize: 16, textDecoration: 'underline' }}>Other Links</h3>
+        <Spacer amount={3} />
+        <Link color="white" onClick={() => go('https://upsidedownstein.com')}>
+          upsidedownstein.com
+        </Link>
+      </Container>
+
       <Spacer amount={50} />
 
       <IconsContainer>
@@ -53,12 +63,7 @@ export const HomeScreen: React.FunctionComponent<HomeScreenProps> = (props) => {
           size={ICON_SIZE}
           color="white"
         />
-        <IconButton
-          onClick={() => go('https://notify.me/twan')}
-          name="notify"
-          size={ICON_SIZE}
-          color="white"
-        />
+        <IconButton onClick={() => go('https://notify.me/twan')} name="notify" size={ICON_SIZE} color="white" />
         <IconButton
           onClick={() => go('https://www.instagram.com/twanluttik/')}
           name="instagram"
@@ -106,6 +111,8 @@ const Link = styled(P)<{ color: string }>`
   cursor: pointer;
   padding: 2px;
 
+  border-radius: 5px;
+
   transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
   &:hover {
     /* color: ${(v) => v.color}; */
@@ -119,4 +126,12 @@ const Bold = styled.p`
   text-align: center;
   padding: 2px;
   padding-right: 0px;
+`;
+
+const Container = styled.div`
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
 `;
