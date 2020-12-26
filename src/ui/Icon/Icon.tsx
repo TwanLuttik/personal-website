@@ -18,4 +18,4 @@ export const Icon: React.FunctionComponent<IconProps> = (props) => {
     </IconBody>
   );
 };
-const IconBody = styled.div``;
+const IconBody = styled.div`display: flex;`;

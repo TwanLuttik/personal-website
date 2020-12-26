@@ -22,6 +22,8 @@ const CenterBody = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
 `;
 
 export const Row: React.FC = (props) => {
