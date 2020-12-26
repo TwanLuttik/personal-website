@@ -95,7 +95,7 @@ const SoftTitle = styled.p`
   -moz-background-clip: text;
   -webkit-text-fill-color: transparent;
   -moz-text-fill-color: transparent;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   font-size: 20px;
 `;
 
@@ -119,24 +119,20 @@ const Bio = styled(Center)`
   margin: 0 auto;
 `;
 
-const P = styled.p`
-  text-align: center;
-`;
-
 const Box = styled.p`
   border-radius: 12px;
   cursor: pointer;
   padding: 15px 20px;
   width: fit-content;
-  background-color: white;
-  color: black;
-  border: solid 2px black;
+  background-color: black;
+  color: white;
+  border: solid 2px white;
 
   transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease, border 0.2s ease;
   &:hover {
-    background-color: transparent;
+    background-color: white;
     transform: scale(1.1);
-    color: white;
-    border: solid 2px white;
+    color: black;
+    border: solid 2px black;
   }
 `;
