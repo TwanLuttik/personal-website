@@ -18,8 +18,8 @@ export const HomeScreen: React.FunctionComponent<HomeScreenProps> = (props) => {
       <Title>Twan Luttik</Title>
       <Spacer amount={5} />
       <AboutText>
-        Sooooo.... This guy is 21 years old and is passioned about IT and more specific, programming. He likes being
-        outside te house than just work.
+        Sooooo.... This guy is 21 years old and is passioned about IT and more specific, programming. Besides
+        programming, likes to be outside and going around the city.
       </AboutText>
       <Spacer amount={30} />
 
@@ -82,18 +82,6 @@ const HomeScreenBody = styled.div`
   min-height: 650px;
 `;
 
-const IconButton = styled(Icon)<any>`
-  cursor: pointer;
-  padding: 0px;
-  border-radius: 10px;
-  margin: 0px 15px;
-
-  transition: opacity 0.2s ease, rotate 0.4s ease, transform 0.3s ease;
-  &:hover {
-    transform: scale(1.48) rotate(4deg);
-  }
-`;
-
 const IconsContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -133,7 +121,7 @@ const Bio = styled(Center)`
   margin: 0 auto;
 `;
 
-const Box = styled.p`
+const Box = styled.div`
   border-radius: 12px;
   cursor: pointer;
   padding: 10px 18px;
@@ -159,6 +147,9 @@ const AboutText = styled.p`
   text-align: center;
   margin: 0 auto;
   padding: 0 20px;
+  font-weight: 500;
+  color: #d8d8d8;
+  line-height: 20px;
 `;
 
 const Madeby = styled.p`
@@ -168,4 +159,16 @@ const Madeby = styled.p`
   opacity: 0.3;
   font-size: 14px;
   font-style: italic;
+`;
+
+const IconButton = styled(Icon)<any>`
+  cursor: pointer;
+  padding: 0px;
+  border-radius: 10px;
+  margin: 0px 15px;
+
+  transition: opacity 0.2s ease, rotate 0.4s ease, transform 0.3s ease;
+  &:hover {
+    transform: scale(1.48) rotate(4deg);
+  }
 `;
