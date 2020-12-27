@@ -127,9 +127,9 @@ const Box = styled.div`
   padding: 10px 18px;
   width: fit-content;
   background-color: black;
-  color: #ffffff50;
+  color: white;
   font-size: 14px;
-  border: solid 2px #ffffff50;
+  border: solid 2px rgba(255, 255, 255, 0.11);
 
   transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease, border 0.2s ease;
   &:hover {
