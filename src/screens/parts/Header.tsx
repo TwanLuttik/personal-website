@@ -27,13 +27,26 @@ export const Header: React.FC<HeaderProps> = (props) => {
           <SocialIcon name="notify" size={25} color="white" onClick={() => go('https://notify.me/twan')} />
         </Row>
       </Container>
+      <BottomBorder />
     </HeaderBody>
   );
 };
 
 const HeaderBody = styled.div`
-  border-bottom: 1px solid #222222;
-  height: 40px;
+  /* border-bottom: 1px solid #222222; */
+  height: 45px;
+
+  &:hover {
+    /* background: linear-gradient(45deg, #8678f3, #ce3863); */
+  }
+`;
+
+const BottomBorder = styled.div`
+  width: 100%;
+  height: 1px;
+  background: #222222;
+  /* background: linear-gradient(45deg, #8678f3, #ce3863); */
+  background: linear-gradient(45deg, #8678f3, #ce3863);
 `;
 
 const SocialIcon = styled(Icon)`
