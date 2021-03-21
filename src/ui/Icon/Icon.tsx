@@ -1,6 +1,6 @@
 import * as React from 'react';
-import styled, { ThemeContext } from 'styled-components';
-import { Github } from './icons/Github';import { Instagram } from './icons/Instagram';import { Linkedin } from './icons/Linkedin';import { Notify } from './icons/Notify';import { Twitter } from './icons/Twitter';
+import styled from 'styled-components';
+import{Github}from'./icons/Github';import{Instagram}from'./icons/Instagram';import{Linkedin}from'./icons/Linkedin';import{Notify}from'./icons/Notify';import{Twitter}from'./icons/Twitter';
 interface IconProps {
   name: string;
   color?: any;
@@ -9,8 +9,7 @@ interface IconProps {
   className?: any;
   onClick?: any;
 }
-export const Icon: React.FunctionComponent<IconProps> = (props) => {
-  const theme: any = React.useContext(ThemeContext);
+export const Icon: React.FC<IconProps> = (props) => {
   const {style, className, onClick} = props;
   return (
     <IconBody className={className} style={{...style}} onClick={onClick}>
@@ -18,4 +17,4 @@ export const Icon: React.FunctionComponent<IconProps> = (props) => {
     </IconBody>
   );
 };
-const IconBody = styled.div`display: flex;`;
+const IconBody = styled.div`display: flex;width: fit-content;`;

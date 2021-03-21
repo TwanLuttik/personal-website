@@ -1,5 +1,6 @@
 import * as React from 'react';
 import styled, { ThemeContext } from 'styled-components';
+import { Footer } from './parts/Footer';
 
 import { HomeScreen } from './screens/HomeScreen'
 
@@ -17,6 +18,7 @@ export const App: React.FunctionComponent<AppProps> = props => {
   return (
     <AppBody>
       <HomeScreen />
+      <Footer />
     </AppBody>
   );
 };

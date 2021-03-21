@@ -1,37 +1,68 @@
-import * as React from 'react';
-import styled, { ThemeContext } from 'styled-components';
+import React from 'react';
+import styled, { CSSProperties } from 'styled-components';
 
-interface SpacerProps {
-  amount: number;
+export const Spacer: React.FC<{ amount: number }> = (props) => {
+  return <SpacerBody style={{ width: props.amount, height: props.amount }}></SpacerBody>;
+};
+
+const SpacerBody = styled.div``;
+
+export const Fill: React.FC = () => {
+  return <FillBody style={{ display: 'flex', flex: 1 }}></FillBody>;
+};
+
+const FillBody = styled.div``;
+
+interface RowProps {
+  style?: React.CSSProperties;
+  className?: string;
+  onClick?: any;
 }
 
-export const Spacer: React.FC<SpacerProps> = (props) => {
-  const { amount } = props;
-
-  return <SpacerBody style={{ height: amount * 2, width: amount * 2 }}></SpacerBody>;
+export const Row: React.FC<RowProps> = (props) => {
+  return (
+    <div className={props.className} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', ...props.style }} onClick={props.onClick}>
+      {props.children}
+    </div>
+  );
 };
 
-const SpacerBody = styled.div`
+export const PageContainer: React.FC<{ style?: CSSProperties; className?: string }> = (props) => {
+  return (
+    <ContainerBoday className={props.className} style={props.style} {...props}>
+      {props.children}
+    </ContainerBoday>
+  );
+};
+
+const ContainerBoday = styled.div`
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  margin: 0 auto;
+  padding: 0px 30px;
+  width: 100%;
+  @media only screen and (min-width: 800px) {
+    max-width: 800px;
+    width: 100%;
+  }
 `;
 
-export const Center: React.FC = (props) => {
-  return <CenterBody>{props.children}</CenterBody>;
+interface CenterProps {
+  style?: CSSProperties;
+  className?: string;
+}
+export const Center: React.FC<CenterProps> = (props) => {
+  return (
+    <CenterContainer className={props.className} style={props.style}>
+      {props.children}
+    </CenterContainer>
+  );
 };
 
-const CenterBody = styled.div`
+const CenterContainer = styled.div<any>`
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  text-align: center;
-`;
-
-export const Row: React.FC = (props) => {
-  return <RowBody>{props.children}</RowBody>;
-};
-
-const RowBody = styled.div`
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
 `;

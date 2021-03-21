@@ -1,7 +1,8 @@
 import * as React from 'react';
 import styled from 'styled-components';
+import { Header } from './parts/Header';
 
-import { Center, Icon, Spacer } from '../ui';
+import { Center, Icon } from '../ui';
 
 interface HomeScreenProps {}
 
@@ -14,60 +15,7 @@ export const HomeScreen: React.FunctionComponent<HomeScreenProps> = (props) => {
 
   return (
     <HomeScreenBody>
-      <Spacer amount={10} />
-      <Title>Twan Luttik</Title>
-      <Spacer amount={5} />
-      <AboutText>
-        Sooooo.... This guy is 21 years old and is passioned about IT and more specific, programming. Besides
-        programming, likes to be outside and going around the city.
-      </AboutText>
-      <Spacer amount={30} />
-
-      <Bio>
-        <SoftTitle>Work</SoftTitle>
-        <Box onClick={() => go('https://notify.me')}>
-          <p style={{ width: 'fit-content', fontWeight: 'bold' }}>Notify Technology, Inc</p>
-        </Box>
-        <Spacer amount={15} />
-        <SoftTitle>Side Project</SoftTitle>
-        <Box onClick={() => go('https://cheapestkeys.com')}>
-          <p style={{ width: 'fit-content', fontWeight: 'bold' }}>Cheapestkeys</p>
-        </Box>
-
-        <Spacer amount={35} />
-        <SoftTitle>Other</SoftTitle>
-        <Box onClick={() => go('https://upsidedownstein.com')}>
-          <p style={{ width: 'fit-content', fontWeight: 'bold' }}>upsidedownstein</p>
-        </Box>
-      </Bio>
-
-      {/* <Spacer amount={80} /> */}
-      <div style={{ display: 'flex', flex: 1 }}></div>
-
-      <IconsContainer>
-        <IconButton onClick={() => go('https://github.com/twanluttik')} name="github" size={ICON_SIZE} color="white" />
-        <IconButton
-          onClick={() => go('https://www.linkedin.com/in/twanluttik/')}
-          name="linkedin"
-          size={ICON_SIZE}
-          color="white"
-        />
-        <IconButton
-          onClick={() => go('https://twitter.com/TwanLuttik')}
-          name="twitter"
-          size={ICON_SIZE}
-          color="white"
-        />
-        <IconButton onClick={() => go('https://notify.me/twan')} name="notify" size={ICON_SIZE} color="white" />
-        <IconButton
-          onClick={() => go('https://www.instagram.com/twanluttik/')}
-          name="instagram"
-          size={ICON_SIZE}
-          color="white"
-        />
-      </IconsContainer>
-      <Spacer amount={15} />
-      <Madeby>Its not made with love, Its made with code.</Madeby>
+      <Header />
     </HomeScreenBody>
   );
 };
@@ -81,6 +29,8 @@ const HomeScreenBody = styled.div`
   height: 100%;
   min-height: 650px;
 `;
+
+
 
 const IconsContainer = styled.div`
   display: flex;

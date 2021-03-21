@@ -2,14 +2,12 @@ const fs = require('fs');
 
 const SVG_FOLDER = './svg';
 const BUILD_FOLDER = './icons';
-// const ICON_BASE =
-//   "import * as React from 'react';import styled, { ThemeContext } from 'styled-components';interface IconSVG_NAMEProps {color?: any;style?: any;}export const SVG_NAME: React.FunctionComponent<IconSVG_NAMEProps> = (props) => {const theme: any = React.useContext(ThemeContext);const {} = props;return (<SVG_NAMEBody style={{ ...props.style }} >SVG_CONTENT</SVG_NAMEBody>);};const SVG_NAMEBody = styled.div``;";
 
 const ICON_BASE =
-  "import * as React from 'react';import styled, { ThemeContext } from 'styled-components';interface IconSVG_NAMEProps {color?: any;style?: any;}export const SVG_NAME: React.FunctionComponent<IconSVG_NAMEProps> = (props) => {const theme: any = React.useContext(ThemeContext);const {} = props;return (SVG_CONTENT);};";
+  "import * as React from 'react';interface IconSVG_NAMEProps {color?: any;style?: any;}export const SVG_NAME: React.FC<IconSVG_NAMEProps> = (props) => {return (SVG_CONTENT);};";
 
 const MASTER_BASE = `import * as React from 'react';
-import styled, { ThemeContext } from 'styled-components';
+import styled from 'styled-components';
 IMPORTS
 interface IconProps {
   name: string;
@@ -19,8 +17,7 @@ interface IconProps {
   className?: any;
   onClick?: any;
 }
-export const Icon: React.FunctionComponent<IconProps> = (props) => {
-  const theme: any = React.useContext(ThemeContext);
+export const Icon: React.FC<IconProps> = (props) => {
   const {style, className, onClick} = props;
   return (
     <IconBody className={className} style={{...style}} onClick={onClick}>
@@ -28,26 +25,30 @@ export const Icon: React.FunctionComponent<IconProps> = (props) => {
     </IconBody>
   );
 };
-const IconBody = styled.div${'`display: flex;`'};
+const IconBody = styled.div${'`display: flex;width: fit-content;`'};
 `;
 
 (async function () {
-  fs.rmdirSync(`${BUILD_FOLDER}`, { recursive: true });
+  fs.rmSync(`${BUILD_FOLDER}`, { recursive: true, force: true });
   fs.mkdirSync(`${BUILD_FOLDER}`, { recursive: true });
 
   const svgs = fs.readdirSync(SVG_FOLDER, { encoding: 'utf8' });
+  let _imports = '';
+  let _render = '';
 
   // loop trough the svg folder
   for await (let svg of svgs) {
-    const svgTitleName = svg.split('.')[0].charAt(0).toUpperCase() + svg.split('.')[0].slice(1);
+    let svgTitleName = svg.split('.')[0].charAt(0).toUpperCase() + svg.split('.')[0].slice(1);
+
+    // If there is a dash included, parse the svg title
+    if (svgTitleName.includes('-'))
+      svgTitleName = svgTitleName.split('-')[0] + svgTitleName.split('-')[1].charAt(0).toUpperCase() + svgTitleName.split('-')[1].slice(1);
 
     // Read the contents
-    const svgContent = fs
-      .readFileSync(`${SVG_FOLDER}/${svg}`, { encoding: 'utf8' })
-      .split('fill="currentColor"')
-      .join('fill={props.color}')
-      .replace('<svg', '<svg style={{ ...props.style }}');
+    let svgContent = fs.readFileSync(`${SVG_FOLDER}/${svg}`, { encoding: 'utf8' }).replace('<svg', '<svg style={props.style}');
 
+    svgContent = parsePropertiesNames(svgContent);
+    svgContent = parseColorNames(svgContent);
 
     // Filter out properties we don't need
     let template = ICON_BASE.replace('SVG_CONTENT', svgContent);
@@ -57,32 +58,34 @@ const IconBody = styled.div${'`display: flex;`'};
 
     // Create file
     fs.writeFileSync(`${BUILD_FOLDER}/${svgTitleName}.tsx`, template, { encoding: 'utf8' });
+
+    // Build the imports and the content for the component
+    _imports = _imports + `import{${svgTitleName}}from'./icons/${svgTitleName}';`;
+    _render =
+      _render +
+      `{ props.name === '${
+        svg.split('.')[0].charAt(0) + svg.split('.')[0].slice(1)
+      }' && <${svgTitleName} color={props.color} style={{ width: props.size, height: props.size }} /> }`;
   }
 
   // delete the Main component
-  fs.rmdirSync(`./Icon.tsx`, { recursive: true });
-
-  // Build the imports and the content for the component
-  let imports = svgs
-    .map(
-      (v) =>
-        `import { ${v.split('.')[0].charAt(0).toUpperCase() + v.split('.')[0].slice(1)} } from './icons/${
-          v.split('.')[0].charAt(0).toUpperCase() + v.split('.')[0].slice(1)
-        }';`
-    )
-    .join('');
-  let content = svgs
-    .map(
-      (v) =>
-        `{ props.name === '${v.split('.')[0]}' && <${
-          v.split('.')[0].charAt(0).toUpperCase() + v.split('.')[0].slice(1)
-        } color={props.color} style={{ width: props.size, height: props.size }} /> }`
-    )
-    .join('');
+  fs.rmSync(`./Icon.tsx`, { recursive: true, force: true });
 
   // build file content
-  let IconContent = MASTER_BASE.replace('IMPORTS', imports).replace('IMPORTS2', content);
+  let IconContent = MASTER_BASE.replace('IMPORTS', _imports).replace('IMPORTS2', _render);
 
   // Create file
   fs.writeFileSync(`./Icon.tsx`, IconContent, { encoding: 'utf8' });
 })();
+
+const parsePropertiesNames = (text) => {
+  if (text?.includes('stroke-width')) text = text.split('stroke-width')[0] + `strokeWidth` + text.split('stroke-width')[1];
+  if (text?.includes('stroke-linecap')) text = text.split('stroke-linecap')[0] + `strokeLinecap` + text.split('stroke-linecap')[1];
+  if (text?.includes('stroke-linejoin')) text = text.split('stroke-linejoin')[0] + `strokeLinejoin` + text.split('stroke-linejoin')[1];
+  return text;
+};
+
+const parseColorNames = (text) => {
+  if (text?.includes('fill=')) text = `${text.replace(/ fill="*" /, ' fill={props.color} ')}`;
+  return text;
+};
