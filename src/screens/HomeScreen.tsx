@@ -1,8 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { Header } from './parts/Header';
 
-import { Center, Icon } from '../ui';
+import { Center, Icon, PageContainer, Spacer } from '../ui';
 
 interface HomeScreenProps {}
 
@@ -15,12 +14,13 @@ export const HomeScreen: React.FunctionComponent<HomeScreenProps> = (props) => {
 
   return (
     <HomeScreenBody>
-      <Header />
+      <Spacer amount={45} />
+      <p>I'm just a regular programmer like everyone else...</p>
     </HomeScreenBody>
   );
 };
 
-const HomeScreenBody = styled.div`
+const HomeScreenBody = styled(PageContainer)`
   background-color: black;
   color: white;
 

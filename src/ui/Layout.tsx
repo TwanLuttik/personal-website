@@ -38,14 +38,15 @@ export const PageContainer: React.FC<{ style?: CSSProperties; className?: string
 const ContainerBoday = styled.div`
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
+  
+  padding: 0px 20px;
   margin: 0 auto;
-  padding: 0px 30px;
-  width: 100%;
   @media only screen and (min-width: 800px) {
     max-width: 800px;
     width: 100%;
+    padding: 0px 20px;
   }
+  
 `;
 
 interface CenterProps {
