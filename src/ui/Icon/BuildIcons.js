@@ -86,6 +86,6 @@ const parsePropertiesNames = (text) => {
 };
 
 const parseColorNames = (text) => {
-  if (text?.includes('fill=')) text = `${text.replace(/ fill="*" /, ' fill={props.color} ')}`;
+  if (text?.includes('fill=')) text = text.replace(/(fill=)\"(.+?)\"/, 'fill={props.color}');
   return text;
 };

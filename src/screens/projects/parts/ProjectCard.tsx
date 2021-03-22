@@ -6,7 +6,7 @@ import { Project } from '../data';
 interface ProjectCardProps extends Project {}
 
 export const ProjectCard: React.FC<ProjectCardProps> = (props) => {
-  const { title, website, description } = props;
+  const { title, website, description, date } = props;
 
   return (
     <ProjectCardBody>
@@ -15,7 +15,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = (props) => {
         <Spacer amount={5} />
         <Description>{description}</Description>
         <Spacer amount={20} />
-        <Row>
+        <Row style={{ paddingTop: date ? 10 : 0 }}>
+          <Date>{date}</Date>
           <Fill />
           <TextButton text="open" style={{ color: '#287bff' }} onClick={() => window.open(website)} />
         </Row>
@@ -35,8 +36,9 @@ const ProjectCardBody = styled.div`
   transition: border 0.3s ease-in-out, transform 0.2s ease-in;
   &:hover {
     border: solid 1px white;
+    transform: translateY(-5px);
   }
-  
+
   @media only screen and (max-width: 500px) {
     width: 100%;
   }
@@ -51,3 +53,8 @@ const Description = styled.p`
 `;
 
 const Title = styled.h3``;
+const Date = styled.p`
+  opacity: 0.3;
+  font-style: italic;
+  font-size: 12px;
+`;

@@ -1,17 +1,21 @@
 import * as React from 'react';
-import { useHistory } from 'react-router';
+import { useHistory, useLocation } from 'react-router';
 import styled from 'styled-components';
 import { Icon, PageContainer, Row, Spacer, TextButton } from '../ui';
 
 interface HeaderProps {}
 export const Header: React.FC<HeaderProps> = (props) => {
   const {} = props;
-  const router = useHistory()
-  
+  const router = useHistory();
+  const location = useLocation();
 
   const routerTo = (a) => {
-    router.push(a)
+    router.push(a);
   };
+
+  React.useEffect(() => {
+    console.log(location);
+  }, [location]);
 
   return (
     <HeaderBody>
@@ -24,7 +28,9 @@ export const Header: React.FC<HeaderProps> = (props) => {
           </NameLabel>
 
           <Spacer amount={50} />
-          <TextButton text="Projects" onClick={() => routerTo('/projects')} />
+          <TextButton text="Projects" onClick={() => routerTo('/projects')} style={{ color: location.pathname === '/projects' ? 'white' : 'gray' }} />
+          <Spacer amount={20} />
+          <TextButton text="Timeline" onClick={() => routerTo('/timeline')} style={{ color: location.pathname === '/timeline' ? 'white' : 'gray' }} />
         </Row>
       </Container>
       <BottomBorder />
@@ -42,8 +48,6 @@ const BottomBorder = styled.div`
   background: #222222;
   background: linear-gradient(45deg, #8678f3, #ce3863);
 `;
-
-
 
 const Container = styled(PageContainer)`
   height: 100%;

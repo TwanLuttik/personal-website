@@ -7,6 +7,7 @@ import { HomeScreen } from '../screens/HomeScreen';
 import { Projects } from '../screens/projects/Projects';
 import { Header } from '../parts/Header';
 import { Footer } from '../parts/Footer';
+import { TimeLine } from '../screens/timeline/TimeLine';
 
 import './index.css';
 
@@ -16,6 +17,10 @@ export const MainRouter: React.FC = () => {
     {
       path: '/projects',
       comp: Projects,
+    },
+    {
+      path: '/timeline',
+      comp: TimeLine,
     },
     {
       path: '/',
@@ -28,12 +33,8 @@ export const MainRouter: React.FC = () => {
       <Header />
       <Container>
         <TransitionGroup>
-          <CSSTransition
-            timeout={300}
-            classNames="fade"
-            key={location.key}
-          >
-            <Switch location={location} >
+          <CSSTransition timeout={300} classNames="fade" key={location.key}>
+            <Switch location={location}>
               {routes.map((v, i) => (
                 <Route key={i} path={v.path} component={v.comp} exact />
               ))}
