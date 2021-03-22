@@ -11,7 +11,7 @@ export const Footer: React.FC<FooterProps> = (props) => {
     <FooterBody>
       <GradiantLine />
       <Container>
-        <Row>
+        <Credit>
           <p>🔥</p> 
           <Spacer amount={8} />
           <p>Created By</p>
@@ -21,7 +21,7 @@ export const Footer: React.FC<FooterProps> = (props) => {
           <p>& Hosted on </p>
           <Spacer amount={4} />
           <p style={{  fontWeight: 600 }}>vercel.com</p>
-        </Row>
+        </Credit>
       </Container>
     </FooterBody>
   );
@@ -48,4 +48,10 @@ const FooterBody = styled.div`
 const Container = styled(PageContainer)`
   justify-content: center;
   height: 100%;
+`;
+
+
+const Credit = styled(Row)`
+  white-space: nowrap;
+  flex-wrap: wrap;
 `;
