@@ -25,10 +25,6 @@ export const Header: React.FC<HeaderProps> = (props) => {
 
           <Spacer amount={50} />
           <TextButton text="Projects" onClick={() => routerTo('/projects')} />
-          {/* <SocialIcon name="linkedin" size={25} color="white" onClick={() => go('https://www.linkedin.com/in/twanluttik/')} />
-          <SocialIcon name="twitter" size={25} color="white" onClick={() => go('https://twitter.com/twanluttik')} />
-          <SocialIcon name="github" size={25} color="white" onClick={() => go('https://github.com/twanluttik')} />
-          <SocialIcon name="notify" size={25} color="white" onClick={() => go('https://notify.me/twan')} /> */}
         </Row>
       </Container>
       <BottomBorder />
@@ -47,15 +43,7 @@ const BottomBorder = styled.div`
   background: linear-gradient(45deg, #8678f3, #ce3863);
 `;
 
-const SocialIcon = styled(Icon)`
-  cursor: pointer;
-  margin: 0 10px;
 
-  transition: color 0.2s ease;
-  &:hover {
-    color: #8a8a8a;
-  }
-`;
 
 const Container = styled(PageContainer)`
   height: 100%;
