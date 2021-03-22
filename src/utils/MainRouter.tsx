@@ -47,6 +47,7 @@ export const MainRouter: React.FC = () => {
 };
 
 const Container = styled.div`
-  min-height: calc(100vh - 140px);
+  height: calc(100vh - 96px);
   margin-top: 1px;
+  overflow-y: scroll;
 `;
