@@ -29,10 +29,11 @@ export const Footer: React.FC<FooterProps> = (props) => {
 
 const FooterBody = styled.div`
   height: 50px;
-  position: absolute;
-  bottom: 1px;
+  position: sticky;
+  bottom: 0px;
   width: 100%;
   color: #686868;
+  background: black;
 `;
 
 const GradiantLine = styled.div`

@@ -44,6 +44,11 @@ const WorkStatusCardBody = styled.div`
   &:active {
     transform: scale(0.98);
   }
+
+
+  @media only screen and (max-width: 500px) {
+    width: 100%;
+  }
 `;
 
 const InnerContainer = styled.div`

@@ -17,8 +17,6 @@ export const App: React.FunctionComponent<AppProps> = (props) => {
 
   return (
     <AppBody>
-      {/* <HomeScreen /> */}
-      {/* <Footer /> */}
       <MainRouter />
     </AppBody>
   );
@@ -26,5 +24,4 @@ export const App: React.FunctionComponent<AppProps> = (props) => {
 
 const AppBody = styled.div`
   background-color: black;
-  height: 100%;
 `;
