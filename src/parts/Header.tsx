@@ -45,6 +45,8 @@ const HeaderBody = styled.div`
 const BottomBorder = styled.div`
   width: 100%;
   height: 1px;
+  z-index: 10;
+  position: relative;
   background: #222222;
   background: linear-gradient(45deg, #8678f3, #ce3863);
 `;
