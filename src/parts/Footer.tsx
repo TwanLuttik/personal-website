@@ -12,15 +12,15 @@ export const Footer: React.FC<FooterProps> = (props) => {
       <GradiantLine />
       <Container>
         <Credit>
-          <p>🔥</p> 
+          <p>🔥</p>
           <Spacer amount={8} />
           <p>Created By</p>
           <Spacer amount={4} />
-          <p style={{  fontWeight: 600 }}>Twan Luttik</p>
+          <Highlight>Twan Luttik</Highlight>
           <Spacer amount={4} />
           <p>& Hosted on </p>
           <Spacer amount={4} />
-          <p style={{  fontWeight: 600 }}>vercel.com</p>
+          <Highlight>vercel.com</Highlight>
         </Credit>
       </Container>
     </FooterBody>
@@ -32,25 +32,25 @@ const FooterBody = styled.div`
   position: absolute;
   bottom: 1px;
   width: 100%;
-  color: white;
+  color: #686868;
 `;
-
 
 const GradiantLine = styled.div`
   width: 100%;
   height: 1px;
   background: #222222;
-  /* background: linear-gradient(45deg, #8678f3, #ce3863); */
   background: linear-gradient(45deg, #8678f3, #ce3863);
 `;
 
-
+const Highlight = styled.p`
+  font-weight: 500;
+  color: white;
+`;
 
 const Container = styled(PageContainer)`
   justify-content: center;
   height: 100%;
 `;
-
 
 const Credit = styled(Row)`
   white-space: nowrap;

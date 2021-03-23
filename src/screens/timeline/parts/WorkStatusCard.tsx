@@ -1,12 +1,12 @@
 import * as React from 'react';
 import styled, { keyframes } from 'styled-components';
-import { Fill, Icon, Row, Spacer } from '../../../ui';
+import { Fill, Icon, Row, Spacer, TextButton } from '../../../ui';
 import { WorkStatusType } from '../data';
 
 interface WorkStatusCardProps extends WorkStatusType {}
 
 export const WorkStatusCard: React.FC<WorkStatusCardProps> = (props) => {
-  const { status, title, website } = props;
+  const { status, title, website, date } = props;
 
   return (
     <WorkStatusCardBody>
@@ -14,13 +14,15 @@ export const WorkStatusCard: React.FC<WorkStatusCardProps> = (props) => {
         <Row>
           <Title>{title}</Title>
           <Fill />
-          <ClickIcon name="globe" size={20} color="white" onClick={() => window.open(website)} />
+          <UrlWebsite text={website} onClick={() => window.open(website)}/>
         </Row>
-        <Spacer amount={20} />
+        <Spacer amount={50} />
         <Row>
           <p>Status: </p>
           <Spacer amount={5} />
           <p>{status === 'WORKING' ? <Dot color="#56FF58" /> : <Dot color="#BB3434" />}</p>
+          <Fill />
+          <Date>Started: {date}</Date>
         </Row>
       </InnerContainer>
     </WorkStatusCardBody>
@@ -50,6 +52,16 @@ const InnerContainer = styled.div`
 
 const Title = styled.h3`
   user-select: none;
+`;
+
+const UrlWebsite = styled(TextButton)`
+  color: #a33c3c;
+`;
+
+const Date = styled.p`
+  color: gray;
+  font-style: italic;
+  font-size: 14px;
 `;
 
 const DotBreathAnimation = keyframes`

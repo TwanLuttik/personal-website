@@ -11,8 +11,8 @@ export const TimeLine: React.FC<TimeLineProps> = (props) => {
 
   return (
     <TimeLineBody>
-      <Spacer amount={20} />
-      <h2>Work status</h2>
+      <Spacer amount={25} />
+      <h1>Work status</h1>
       <Spacer amount={5} />
       <>
         {workstatus.map((v, i) => (
