@@ -10,7 +10,7 @@ import ReactGA from 'react-ga';
 if (process.env.NODE_ENV === 'production') {
   console.log('production build...');
   
-  ReactGA.initialize('UA-124433096-1');
+  ReactGA.initialize('UA-124433096-3');
   ReactGA.pageview(window.location.pathname + window.location.search);
 } else {
   //@ts-ignore
