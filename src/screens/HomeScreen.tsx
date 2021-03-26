@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { Center, Icon, PageContainer, Row, Spacer } from '../ui';
+import { Center, Icon, PageContainer, Row, Spacer, TextButton } from '../ui';
 
 interface HomeScreenProps {}
 
@@ -24,18 +24,35 @@ export const HomeScreen: React.FunctionComponent<HomeScreenProps> = (props) => {
       </ShortBio>
       <Spacer amount={30} />
       <ShortBio>
-        When it comes to programming, I'm a fast learner and i always like to learn new frameworks or languages. I always work on my side-projects to improve myself with programming. 
+        When it comes to programming, I'm a fast learner and i always like to learn new frameworks or languages. I always work on my side-projects to
+        improve myself with programming.
       </ShortBio>
       <Spacer amount={120} />
       <ShortBio>Feel free to contact me for any questions</ShortBio>
-      <Spacer amount={20} />
+      <Spacer amount={35} />
 
-      <Row>
-        <SocialIcon name="linkedin" size={ICON_SIZE} color="white" onClick={() => go('https://www.linkedin.com/in/twanluttik/')} />
-        <SocialIcon name="twitter" size={ICON_SIZE} color="white" onClick={() => go('https://twitter.com/twanluttik')} />
-        <SocialIcon name="github" size={ICON_SIZE} color="white" onClick={() => go('https://github.com/twanluttik')} />
+      <div>
+        <Row>
+          <SocialIcon name="linkedin" size={ICON_SIZE} color="#0A66C2" onClick={() => go('https://www.linkedin.com/in/twanluttik/')} />
+          <SocialText text="LinkedIn" onClick={() => go('https://www.linkedin.com/in/twanluttik/')}/>
+        </Row>
+        <Spacer amount={12} />
+        <Row>
+          <SocialIcon name="twitter" size={ICON_SIZE} color="#1BA1F2" onClick={() => go('https://twitter.com/twanluttik')} />
+          <SocialText text="Twitter" onClick={() => go('https://twitter.com/twanluttik')} />
+        </Row>
+        <Spacer amount={12} />
+        <Row>
+          <SocialIcon name="github" size={ICON_SIZE} color="white" onClick={() => go('https://github.com/twanluttik')} />
+          <SocialText text="Github" onClick={() => go('https://github.com/twanluttik')} />
+        </Row>
+        <Spacer amount={12} />
+        <Row>
+          <SocialIcon name="notify" size={ICON_SIZE} color="#3B60FF" onClick={() => go('https://notify.me/twan')} />
+          <SocialText text="Notify" onClick={() => go('https://notify.me/twan')}/>
+        </Row>
         {/* <SocialIcon name="notify" size={ICON_SIZE} color="white" onClick={() => go('https://notify.me/twan')} /> */}
-      </Row>
+      </div>
     </HomeScreenBody>
   );
 };
@@ -70,4 +87,11 @@ const SocialIcon = styled(Icon)`
 const ShortBio = styled.p`
   line-height: 23px;
   color: #c7c7c7;
+`;
+
+const SocialText = styled(TextButton)`
+  font-weight: 400;
+  opacity: 0.8;
+  color: white;
+  font-size: 18px;
 `;

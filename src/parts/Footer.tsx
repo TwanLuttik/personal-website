@@ -30,7 +30,7 @@ export const Footer: React.FC<FooterProps> = (props) => {
 const FooterBody = styled.div`
   height: 50px;
   position: sticky;
-  bottom: 0px;
+  bottom: 0;
   width: 100%;
   color: #686868;
   background: black;
@@ -39,6 +39,7 @@ const FooterBody = styled.div`
 const GradiantLine = styled.div`
   width: 100%;
   height: 1px;
+  position: absolute;
   background: #222222;
   background: linear-gradient(45deg, #8678f3, #ce3863);
 `;
