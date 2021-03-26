@@ -24,19 +24,21 @@ export const ProjectCard: React.FC<ProjectCardProps> = (props) => {
         <Row>
           <Title>{title}</Title>
           <Fill />
-          <Date>{date}</Date>
-        </Row>
-        <Spacer amount={5} />
-        <Description>{description}</Description>
-        <Spacer amount={40} />
-        <Row style={{ paddingTop: date ? 10 : 0 }}>
-          <>
+          <div>
             {lang.map((v, i) => (
               <LangText key={i} color={langColorParser(v)}>
                 {v}
               </LangText>
             ))}
-          </>
+          </div>
+        </Row>
+        <Spacer amount={5} />
+        <Description>{description}</Description>
+        <Spacer amount={40} />
+
+        <Row style={{ paddingTop: date ? 10 : 0 }}>
+          <Date>Started: {date}</Date>
+
           <Fill />
           <TextButton text="open" style={{ color: '#287bff' }} onClick={() => window.open(website)} />
         </Row>
@@ -83,5 +85,6 @@ const LangText = styled.p<{ color: string }>`
   font-size: 15px;
   font-variant-caps: all-petite-caps;
   margin-right: 5px;
+  font-weight: 600;
   color: ${({ color }) => color};
 `;
