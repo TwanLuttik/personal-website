@@ -1,17 +1,27 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { PageContainer, Row, Spacer } from '../../ui';
+import { PageContainer, Row, Spacer, TextButton } from '../../ui';
 
 interface ResumeProps {}
 
 export const Resume: React.FC<ResumeProps> = (props) => {
   const {} = props;
 
+  const go = (a: string) => {
+    window.open(a);
+  };
+
   return (
     <ResumeBody>
+      <Spacer amount={20} />
+      <p style={{ textDecoration: 'underline' }}>Quick links</p>
+      <Spacer amount={10} />
+      <SocialText text="LinkedIn" onClick={() => go('https://www.linkedin.com/in/twanluttik/')} />
+      <SocialText text="Github" onClick={() => go('https://github.com/twanluttik')} />
       <Spacer amount={50} />
       <H2>Programming knownledge</H2>
       <Spacer amount={10} />
+      
       <div>
         <Box>
           <p>- Javascript/Typescript</p>
@@ -23,16 +33,17 @@ export const Resume: React.FC<ResumeProps> = (props) => {
         </Box>
         <Box>
           <p>- VueJs</p>
-          <ExperienceTime>+1.5 Years</ExperienceTime>
+          <ExperienceTime>+3 Years</ExperienceTime>
         </Box>
-        <Spacer amount={20} />
+        <Spacer amount={40} />
         <p>- Back-end knownledge</p>
       </div>
-      <Spacer amount={50} />
+      <Spacer amount={80} />
       <H2>Strong points</H2>
       <Spacer amount={10} />
-      <p>- Im a fast learner</p>
-      <p>- Communication and availability on point</p>
+      <p>- Im am a fast learner when it comes to discover new tech or other.</p>
+      <p>- Communication is important.</p>
+      <p>- Helping other people in the team if the have question.</p>
 
       <Spacer amount={80} />
       <H2>Work experience</H2>
@@ -70,7 +81,7 @@ export const Resume: React.FC<ResumeProps> = (props) => {
 
 const ResumeBody = styled(PageContainer)`
   flex: 1;
-  color: #ffffff;
+  color: #a7a7a7;
 `;
 
 const Box = styled(Row)`
@@ -94,6 +105,12 @@ const WorkExpBox = styled.div`
   @media only screen and (max-width: 500px) {
     width: 100%;
   }
+
+  transition: 0.2s ease;
+  &:hover {
+    color: white;
+    transform: scale(1.02);
+  }
 `;
 
 const Title = styled.p`
@@ -115,5 +132,13 @@ const LinkUrl = styled.p`
 `;
 
 const H2 = styled.h2`
-  padding-left: 10px;
+  padding-bottom: 10px;
+  color: white;
+`;
+
+const SocialText = styled(TextButton)`
+  font-weight: 400;
+  opacity: 0.8;
+  color: white;
+  font-size: 18px;
 `;
