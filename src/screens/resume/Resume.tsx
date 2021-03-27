@@ -36,14 +36,17 @@ export const Resume: React.FC<ResumeProps> = (props) => {
           <ExperienceTime>+3 Years</ExperienceTime>
         </Box>
         <Spacer amount={40} />
-        <p>- Back-end knownledge</p>
+        <p style={{ paddingBottom: 5, color: 'white' }}>Other</p>
+        <p>- Postgres</p>
+        <p>- git</p>
+        <p>- knownledge for apis</p>
       </div>
       <Spacer amount={80} />
       <H2>Strong points</H2>
       <Spacer amount={10} />
       <p>- Im am a fast learner when it comes to discover new tech or other.</p>
       <p>- Communication is important.</p>
-      <p>- Helping other people in the team if the have question.</p>
+      <p>- Helping my team if they have any question or issues.</p>
 
       <Spacer amount={80} />
       <H2>Work experience</H2>
@@ -54,7 +57,7 @@ export const Resume: React.FC<ResumeProps> = (props) => {
           <JobTitle>Front-End engineer</JobTitle>
           <p>- React / React Native</p>
           <p>- VueJs 2.6</p>
-          <LinkUrl>https://notify.me</LinkUrl>
+          <LinkUrl onClick={() => go('https://notify.me')}>https://notify.me</LinkUrl>
         </div>
       </WorkExpBox>
       <WorkExpBox>
@@ -63,7 +66,7 @@ export const Resume: React.FC<ResumeProps> = (props) => {
           <JobTitle>Founder/CEO</JobTitle>
           <p>- React </p>
           <p>- Typescript</p>
-          <LinkUrl>https://cheapestkeys.com</LinkUrl>
+          <LinkUrl onClick={() => go('https://cheapestkeys.com')}>https://cheapestkeys.com</LinkUrl>
         </div>
       </WorkExpBox>
       <WorkExpBox>
@@ -72,7 +75,7 @@ export const Resume: React.FC<ResumeProps> = (props) => {
           <JobTitle></JobTitle>
           <p>- React </p>
           <p>- Typescript</p>
-          <LinkUrl>https://thrurate.com</LinkUrl>
+          <LinkUrl onClick={() => go('https://thrurate.com')}>https://thrurate.com</LinkUrl>
         </div>
       </WorkExpBox>
     </ResumeBody>
@@ -129,6 +132,12 @@ const LinkUrl = styled.p`
   font-style: italic;
   font-size: 14px;
   margin-top: 15px;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
 `;
 
 const H2 = styled.h2`
