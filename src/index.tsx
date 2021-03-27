@@ -11,7 +11,7 @@ import core from './core'
 if (process.env.NODE_ENV === 'production') {
   console.log('production build...');
   
-  ReactGA.initialize('UA-124433096-3');
+  ReactGA.initialize('UA-193152656-2');
   ReactGA.pageview(window.location.pathname + window.location.search);
 } else {
   //@ts-ignore
