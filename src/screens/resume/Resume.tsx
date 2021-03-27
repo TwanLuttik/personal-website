@@ -133,6 +133,7 @@ const LinkUrl = styled.p`
   font-size: 14px;
   margin-top: 15px;
   cursor: pointer;
+  width: fit-content;
 
   &:hover {
     text-decoration: underline;
