@@ -7,6 +7,7 @@ import { HomeScreen } from '../screens/HomeScreen';
 import { Projects } from '../screens/projects/Projects';
 import { Header } from '../parts/Header';
 import { Footer } from '../parts/Footer';
+import { Resume } from '../screens/resume/Resume';
 import { TimeLine } from '../screens/timeline/TimeLine';
 
 import './index.css';
@@ -17,6 +18,10 @@ export const MainRouter: React.FC = () => {
     {
       path: '/projects',
       comp: Projects,
+    },
+    {
+      path: '/resume',
+      comp: Resume,
     },
     {
       path: '/timeline',
