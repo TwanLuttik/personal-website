@@ -6,7 +6,7 @@ import { Center, Icon, PageContainer, Row, Spacer, TextButton } from '../ui';
 interface HomeScreenProps {}
 
 export const HomeScreen: React.FunctionComponent<HomeScreenProps> = (props) => {
-  const ICON_SIZE = 35;
+  const ICON_SIZE = 25;
 
   const go = (a) => {
     window.open(a);
@@ -31,28 +31,12 @@ export const HomeScreen: React.FunctionComponent<HomeScreenProps> = (props) => {
       <ShortBio>Feel free to contact me for any questions</ShortBio>
       <Spacer amount={35} />
 
-      <div>
-        <Row>
-          <SocialIcon name="linkedin" size={ICON_SIZE} color="#0A66C2" onClick={() => go('https://www.linkedin.com/in/twanluttik/')} />
-          <SocialText text="LinkedIn" onClick={() => go('https://www.linkedin.com/in/twanluttik/')}/>
-        </Row>
-        <Spacer amount={12} />
-        <Row>
-          <SocialIcon name="twitter" size={ICON_SIZE} color="#1BA1F2" onClick={() => go('https://twitter.com/twanluttik')} />
-          <SocialText text="Twitter" onClick={() => go('https://twitter.com/twanluttik')} />
-        </Row>
-        <Spacer amount={12} />
-        <Row>
-          <SocialIcon name="github" size={ICON_SIZE} color="white" onClick={() => go('https://github.com/twanluttik')} />
-          <SocialText text="Github" onClick={() => go('https://github.com/twanluttik')} />
-        </Row>
-        <Spacer amount={12} />
-        <Row>
-          <SocialIcon name="notify" size={ICON_SIZE} color="#3B60FF" onClick={() => go('https://notify.me/twan')} />
-          <SocialText text="Notify" onClick={() => go('https://notify.me/twan')}/>
-        </Row>
-        {/* <SocialIcon name="notify" size={ICON_SIZE} color="white" onClick={() => go('https://notify.me/twan')} /> */}
-      </div>
+      <Row>
+        <SocialIcon name="linkedin" size={ICON_SIZE} color="#0A66C2" onClick={() => go('https://www.linkedin.com/in/twanluttik/')} />
+        <SocialIcon name="twitter" size={ICON_SIZE} color="#1BA1F2" onClick={() => go('https://twitter.com/twanluttik')} />
+        <SocialIcon name="github" size={ICON_SIZE} color="white" onClick={() => go('https://github.com/twanluttik')} />
+        <SocialIcon name="notify" size={ICON_SIZE} color="#3B60FF" onClick={() => go('https://notify.me/twan')} />
+      </Row>
     </HomeScreenBody>
   );
 };
@@ -70,6 +54,9 @@ const HomeScreenBody = styled(PageContainer)`
 const SocialIcon = styled(Icon)`
   cursor: pointer;
   margin: 0 8px;
+  border: solid 1px #2c2c2c;
+  padding: 10px;
+  border-radius: 4px;
 
   :first-child {
     margin-left: 0px;
