@@ -25,7 +25,7 @@ export const App: React.FunctionComponent<AppProps> = (props) => {
       <SideBarButton
         name="arrow-right"
         size={30}
-        color="#282828"
+        color="#424242"
         onClick={() => core.base.state.SIDEBAR_OPEN.set(!sidebarOpen)}
         sidebarOpen={sidebarOpen}
       />
