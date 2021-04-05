@@ -11,8 +11,12 @@ import { Resume } from '../screens/resume/Resume';
 import { TimeLine } from '../screens/timeline/TimeLine';
 
 import './index.css';
+import { SideBar } from '../parts/SideBar';
+import { usePulse } from '@pulsejs/react';
+import core from '../core';
 
 export const MainRouter: React.FC = () => {
+  const sidebarOpen = usePulse(core.base.state.SIDEBAR_OPEN);
   const location = useLocation();
   const routes = [
     {
@@ -34,9 +38,9 @@ export const MainRouter: React.FC = () => {
   ];
 
   return (
-    <>
-      <Header />
-      <Container>
+    <Container>
+      <SideBar />
+      <MainContaner sidebarOpen={sidebarOpen}>
         <TransitionGroup>
           <CSSTransition timeout={300} classNames="fade" key={location.key}>
             <Switch location={location}>
@@ -46,16 +50,25 @@ export const MainRouter: React.FC = () => {
             </Switch>
           </CSSTransition>
         </TransitionGroup>
-      </Container>
-      <Footer />
-    </>
+      </MainContaner>
+    </Container>
   );
 };
 
 const Container = styled.div`
-  min-height: calc(100vh + 50px);
-    /* background-color: black; */
-  /* height: calc(100vh - 96px); */
-  /* margin-top: 1px; */
-  overflow-y: scroll;
+  /* min-height: calc(100vh); */
+  height: calc(100vh);
+  display: flex;
+  /* position: relative; */
+`;
+
+const MainContaner = styled.div<{ sidebarOpen: boolean }>`
+  /* min-height: calc(100vh); */
+  /* height: calc(100vh); */
+  display: flex;
+  flex: 1;
+  /* overflow-y: scroll; */
+  /* @media only screen and (max-width: 400px) {
+    position: ${({ sidebarOpen }) => (sidebarOpen ? 'absolute' : 'unset')};
+  } */
 `;

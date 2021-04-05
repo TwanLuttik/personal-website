@@ -35,6 +35,7 @@ const IconBody = styled.div${'`display: flex;width: fit-content;`'};
   const svgs = fs.readdirSync(SVG_FOLDER, { encoding: 'utf8' });
   let _imports = '';
   let _render = '';
+  let count = 0;
 
   // loop trough the svg folder
   for await (let svg of svgs) {
@@ -49,6 +50,7 @@ const IconBody = styled.div${'`display: flex;width: fit-content;`'};
 
     svgContent = parsePropertiesNames(svgContent);
     svgContent = parseColorNames(svgContent);
+    svgContent = removeProperties(svgContent);
 
     // Filter out properties we don't need
     let template = ICON_BASE.replace('SVG_CONTENT', svgContent);
@@ -66,6 +68,7 @@ const IconBody = styled.div${'`display: flex;width: fit-content;`'};
       `{ props.name === '${
         svg.split('.')[0].charAt(0) + svg.split('.')[0].slice(1)
       }' && <${svgTitleName} color={props.color} style={{ width: props.size, height: props.size }} /> }`;
+    count++;
   }
 
   // delete the Main component
@@ -76,17 +79,29 @@ const IconBody = styled.div${'`display: flex;width: fit-content;`'};
 
   // Create file
   fs.writeFileSync(`./Icon.tsx`, IconContent, { encoding: 'utf8' });
+  console.log(`\n🔥 Processed ${count} icons\n`);
 })();
 
 const parsePropertiesNames = (text) => {
-  if (text?.includes('stroke-width')) text = text.split('stroke-width')[0] + `strokeWidth` + text.split('stroke-width')[1];
-  if (text?.includes('stroke-linecap')) text = text.split('stroke-linecap')[0] + `strokeLinecap` + text.split('stroke-linecap')[1];
-  if (text?.includes('stroke-linejoin')) text = text.split('stroke-linejoin')[0] + `strokeLinejoin` + text.split('stroke-linejoin')[1];
+  if (text?.includes('enable-width')) text.split('enable-width=').map(() => (text = text.replace(/(enable-width=)/, 'enableWidth=')));
+  if (text?.includes('enable-linecap')) text.split('enable-linecap=').map(() => (text = text.replace(/(enable-linecap=)/, 'strokeLinecap=')));
+  if (text?.includes('enable-linejoin')) text.split('enable-linejoin=').map(() => (text = text.replace(/(enable-linejoin=)/, 'strokeLinejoin=')));
+  if (text?.includes('enable-background'))
+    text.split('enable-background=').map(() => (text = text.replace(/(enable-background=)/, 'enableBackground=')));
+  if (text?.includes('clip-rule')) text.split('clip-rule=').map(() => (text = text.replace(/(clip-rule=)/, 'clipRule=')));
+  if (text?.includes('clip-path')) text.split('clip-path=').map(() => (text = text.replace(/(clip-path=)/, 'clipPath=')));
+  if (text?.includes('fill-rule')) text.split('fill-rule=').map(() => (text = text.replace(/(fill-rule=)/, 'fillRule=')));
+  if (text?.includes('stroke-width')) text.split('stroke-width=').map(() => (text = text.replace(/(stroke-width=)/, 'strokeWidth=')));
+
   return text;
 };
 
 const parseColorNames = (text) => {
-
-  if (text?.includes('fill=')) text.split('fill=').map(() => text = text.replace(/(fill=)\"(.+?)\"/, 'fill={props.color}'))
+  if (text?.includes('fill=')) text.split('fill=').map(() => (text = text.replace(/(fill=)\"(.+?)\"/, 'fill={props.color}')));
   return text;
 };
+
+const removeProperties = (text) => {
+  if (text?.includes('class=')) text.split('class=').map(() => (text = text.replace(/(class=)\"(.+?)\"/, '')));
+  return text;
+}

@@ -8,10 +8,8 @@ export const Spacer: React.FC<{ amount: number }> = (props) => {
 const SpacerBody = styled.div``;
 
 export const Fill: React.FC = () => {
-  return <FillBody style={{ display: 'flex', flex: 1 }}></FillBody>;
+  return <div style={{ display: 'flex', flex: 1 }}></div>;
 };
-
-const FillBody = styled.div``;
 
 interface RowProps {
   style?: React.CSSProperties;
@@ -30,6 +28,7 @@ export const Row: React.FC<RowProps> = (props) => {
 export const PageContainer: React.FC<{ style?: CSSProperties; className?: string }> = (props) => {
   return (
     <ContainerBoday className={props.className} style={props.style} {...props}>
+      <Spacer amount={50} />
       {props.children}
     </ContainerBoday>
   );
@@ -38,9 +37,10 @@ export const PageContainer: React.FC<{ style?: CSSProperties; className?: string
 const ContainerBoday = styled.div`
   display: flex;
   flex-direction: column;
-  
-  padding: 0px 20px;
-  margin: 0 auto;
+  padding: 15px;
+  /* padding: 0px 20px; */
+  /* padding-left: 10px; */
+  /* margin: 0 auto; */
   @media only screen and (min-width: 800px) {
     max-width: 800px;
     width: 100%;

@@ -47,8 +47,8 @@ const BottomBorder = styled.div`
   height: 1px;
   z-index: 10;
   position: relative;
-  background: #222222;
-  background: linear-gradient(45deg, #8678f3, #ce3863);
+  background: #60AF5F;
+  /* background: linear-gradient(45deg, #8678f3, #ce3863); */
 `;
 
 const Container = styled(PageContainer)`

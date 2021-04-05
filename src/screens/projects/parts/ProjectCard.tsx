@@ -21,7 +21,12 @@ export const ProjectCard: React.FC<ProjectCardProps> = (props) => {
   return (
     <ProjectCardBody>
       <InnerArea>
-        <Row>
+        <Title>{title}</Title>
+        <Spacer amount={15} /> 
+        <Description>{description}</Description>
+        <Date>Started: {date}</Date>
+        {/* <TextButton text="open" style={{ color: 'white' }} onClick={() => window.open(website)} /> */}
+        {/* <Row>
           <Title>{title}</Title>
           <Fill />
           <div>
@@ -41,7 +46,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = (props) => {
 
           <Fill />
           <TextButton text="open" style={{ color: '#287bff' }} onClick={() => window.open(website)} />
-        </Row>
+        </Row> */}
       </InnerArea>
     </ProjectCardBody>
   );
@@ -49,32 +54,31 @@ export const ProjectCard: React.FC<ProjectCardProps> = (props) => {
 
 const ProjectCardBody = styled.div`
   width: fit-content;
-  margin: 10px 0px;
+  /* margin: 10px 0px; */
   border-radius: 8px;
-  width: 400px;
-  border: solid 1px #222222;
-  cursor: pointer;
+  padding: 15px;
 
-  transition: border 0.3s ease-in-out, transform 0.2s ease-in;
-  &:hover {
-    border: solid 1px white;
-    transform: translateY(-5px);
-  }
+  /* cursor: pointer; */
+  color: white;
+  background: #151515;
 
   @media only screen and (max-width: 500px) {
-    width: 100%;
+    /* width: 100%; */
   }
 `;
 
 const InnerArea = styled.div`
-  padding: 20px;
 `;
 
 const Description = styled.p`
   opacity: 0.5;
 `;
 
-const Title = styled.h3``;
+const Title = styled.p`
+  font-size: 20px;
+  font-weight: 700;
+`;
+
 const Date = styled.p`
   opacity: 0.3;
   font-style: italic;

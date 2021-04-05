@@ -13,7 +13,8 @@ export const Resume: React.FC<ResumeProps> = (props) => {
 
   return (
     <ResumeBody>
-      <Spacer amount={20} />
+      <p>Twan Luttik</p>
+      {/* <Spacer amount={20} />
       <p style={{ textDecoration: 'underline' }}>Quick links</p>
       <Spacer amount={10} />
       <SocialText text="LinkedIn" onClick={() => go('https://www.linkedin.com/in/twanluttik/')} />
@@ -77,7 +78,7 @@ export const Resume: React.FC<ResumeProps> = (props) => {
           <p>- Typescript</p>
           <LinkUrl onClick={() => go('https://thrurate.com')}>https://thrurate.com</LinkUrl>
         </div>
-      </WorkExpBox>
+      </WorkExpBox> */}
     </ResumeBody>
   );
 };

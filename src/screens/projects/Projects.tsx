@@ -11,7 +11,6 @@ export const Projects: React.FC<ProjectsProps> = (props) => {
 
   return (
     <ProjectsBody>
-      <Spacer amount={25} />
       <h1>Projects</h1>
       <Spacer amount={40} />
       <>
@@ -24,6 +23,5 @@ export const Projects: React.FC<ProjectsProps> = (props) => {
 };
 
 const ProjectsBody = styled(PageContainer)`
-  flex: 1;
   color: white;
 `;

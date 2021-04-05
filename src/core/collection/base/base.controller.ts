@@ -3,7 +3,8 @@ import { App } from '../../app';
 
 
 export const BaseState = {
-  TAB: App.State<string>('home'),
+  TAB: App.State<number>(0),
+  SIDEBAR_OPEN: App.State<boolean>(false)
 };
 
 
