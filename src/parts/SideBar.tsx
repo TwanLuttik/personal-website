@@ -62,12 +62,12 @@ const SideBarBody = styled(Row)<{ sidebarOpen: boolean }>`
   max-width: 250px;
   display: flex;
   position: relative;
-  
+  backdrop-filter: blur(10px);
   /* padding: 0px 10px; */
 
   @media only screen and (max-width: 500px) {
     position: absolute;
-    background: #111111;
+    background: rgba(17, 17, 17, 0.32);
     height: 100%;
     z-index: 10;
     width: 100%;
