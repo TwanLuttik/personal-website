@@ -1,6 +1,6 @@
 {
   "short_name": "Twan Luttik",
-  "name": "Create React App Sample",
+  "name": "twan",
   "icons": [
     {
       "src": "favicon.ico",
@@ -18,7 +18,7 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": ".",
+  "start_url": "https://twanluttik.com",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
