@@ -42,16 +42,16 @@ const SideBarButton = styled(Icon)<{ sidebarOpen: boolean }>`
   display: none;
   position: absolute;
   bottom: 10px;
-  left: 10px;
+  right: 10px;
   z-index: 10;
   /* pointer-events: visible; */
 
   @media only screen and (max-width: 500px) {
     display: flex;
     left: unset;
-    left: ${({ sidebarOpen }) => (sidebarOpen ? 270 : 10)}px;
+    /* left: ${({ sidebarOpen }) => (sidebarOpen ? 270 : 10)}px; */
     transform: rotate(${({ sidebarOpen }) => (sidebarOpen ? 180 : 0)}deg);
   }
 
-  transition: left 0.4s ease-in-out, transform 0.4s ease-in-out;
+  transition: left 0.3s ease-in-out, transform 0.3s ease-in-out;
 `;

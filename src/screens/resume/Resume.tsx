@@ -14,6 +14,16 @@ export const Resume: React.FC<ResumeProps> = (props) => {
   return (
     <ResumeBody>
       <p>Twan Luttik</p>
+      <Spacer amount={20} />
+      <p style={{ textDecoration: 'underline' }}>Experience</p>
+      <p>- VueJS 2.6</p>
+      <p>- React js + React Native</p>
+      <p>- Javascript + Typescript</p>
+
+      <Spacer amount={50} />
+      <p style={{ textDecoration: 'underline' }}>Production work</p>
+      <p>https://cheapestkeys.com</p>
+      <p>https://thrurate.com</p>
       {/* <Spacer amount={20} />
       <p style={{ textDecoration: 'underline' }}>Quick links</p>
       <Spacer amount={10} />
@@ -139,7 +149,6 @@ const LinkUrl = styled.p`
   &:hover {
     text-decoration: underline;
   }
-
 `;
 
 const H2 = styled.h2`

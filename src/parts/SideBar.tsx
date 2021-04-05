@@ -30,6 +30,7 @@ export const SideBar: React.FC<SideBarProps> = (props) => {
   const routerTo = (v: string, i: number) => {
     core.base.state.TAB.set(i);
     router.push(v);
+    core.base.state.SIDEBAR_OPEN.set(false)
   };
 
   return (
@@ -69,12 +70,13 @@ const SideBarBody = styled(Row)<{ sidebarOpen: boolean }>`
     background: #111111;
     height: 100%;
     z-index: 10;
-    /* width: 100%; */
-    width: ${({ sidebarOpen }) => (sidebarOpen ? 100 : 0)}%!important;
-    min-width: ${({ sidebarOpen }) => (sidebarOpen ? 250 : 0)}px!important;
-    left: ${({ sidebarOpen }) => (sidebarOpen ? 0 : -250)}px!important;
+    width: 100%;
+    max-width: 80%;
+    /* width: ${({ sidebarOpen }) => (sidebarOpen ? 100 : 0)}%!important; */
+    /* min-width: ${({ sidebarOpen }) => (sidebarOpen ? 250 : 0)}px!important; */
+    left: ${({ sidebarOpen }) => (sidebarOpen ? 0 : -80)}%!important;
   }
-  transition: width 0.4s ease-in-out, left 0.4s ease-in-out, min-width 0.4s ease-in-out;
+  transition: width 0.3s ease-in-out, left 0.3s ease-in-out, min-width 0.3s ease-in-out;
 `;
 
 const Content = styled.div`

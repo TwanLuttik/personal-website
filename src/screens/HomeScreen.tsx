@@ -28,6 +28,9 @@ export const HomeScreen: React.FC<HomeScreenProps> = (props) => {
           <SocialIcon key={i} name={v.icon} size={ICON_SIZE} color="#5B5E65" onClick={() => go(v.link)} />
         ))}
       </Row>
+
+      <Spacer amount={15}/>
+      <p style={{ opacity: 0.6}}>Im Twan, 21 years old. I like doing stuff with tech like programming or building computers or anything else related to tech i find interesting. From everything i like to program.</p>
     </HomeScreenBody>
   );
 };
@@ -45,6 +48,9 @@ const SocialIcon = styled(Icon)`
   border-radius: 4px;
   margin: 0 10px;
 
+  &:nth-child(1) {
+    margin-left: 0px;
+  }
   transition: opacity 0.2s ease;
   &:hover {
     opacity: 0.6;

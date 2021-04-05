@@ -57,6 +57,7 @@ const ProjectCardBody = styled.div`
   /* margin: 10px 0px; */
   border-radius: 8px;
   padding: 15px;
+  margin-bottom: 15px;
 
   /* cursor: pointer; */
   color: white;
