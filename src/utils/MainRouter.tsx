@@ -19,18 +19,18 @@ export const MainRouter: React.FC = () => {
   const sidebarOpen = usePulse(core.base.state.SIDEBAR_OPEN);
   const location = useLocation();
   const routes = [
-    {
-      path: '/projects',
-      comp: Projects,
-    },
-    {
-      path: '/resume',
-      comp: Resume,
-    },
-    {
-      path: '/timeline',
-      comp: TimeLine,
-    },
+    // {
+    //   path: '/projects',
+    //   comp: Projects,
+    // },
+    // {
+    //   path: '/resume',
+    //   comp: Resume,
+    // },
+    // {
+    //   path: '/timeline',
+    //   comp: TimeLine,
+    // },
     {
       path: '/',
       comp: HomeScreen,
@@ -39,36 +39,22 @@ export const MainRouter: React.FC = () => {
 
   return (
     <Container>
-      <SideBar />
-      <MainContaner sidebarOpen={sidebarOpen}>
-        <TransitionGroup>
-          <CSSTransition timeout={300} classNames="fade" key={location.key}>
-            <Switch location={location}>
-              {routes.map((v, i) => (
-                <Route key={i} path={v.path} component={v.comp} exact />
-              ))}
-            </Switch>
-          </CSSTransition>
-        </TransitionGroup>
-      </MainContaner>
+      {/* <SideBar /> */}
+      <TransitionGroup>
+        <CSSTransition timeout={300} classNames="fade" key={location.key}>
+          <Switch location={location}>
+            {routes.map((v, i) => (
+              <Route key={i} path={v.path} component={v.comp} exact />
+            ))}
+          </Switch>
+        </CSSTransition>
+      </TransitionGroup>
     </Container>
   );
 };
 
 const Container = styled.div`
-  /* min-height: calc(100vh); */
   height: calc(100vh);
   display: flex;
-  /* position: relative; */
-`;
-
-const MainContaner = styled.div<{ sidebarOpen: boolean }>`
-  /* min-height: calc(100vh); */
-  /* height: calc(100vh); */
-  display: flex;
-  flex: 1;
-  /* overflow-y: scroll; */
-  /* @media only screen and (max-width: 400px) {
-    position: ${({ sidebarOpen }) => (sidebarOpen ? 'absolute' : 'unset')};
-  } */
+  justify-content: center;
 `;

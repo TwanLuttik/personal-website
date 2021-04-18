@@ -22,21 +22,12 @@ export const App: React.FunctionComponent<AppProps> = (props) => {
 
   return (
     <AppBody>
-      <SideBarButton
-        name="arrow-right"
-        size={30}
-        color="#424242"
-        onClick={() => core.base.state.SIDEBAR_OPEN.set(!sidebarOpen)}
-        sidebarOpen={sidebarOpen}
-      />
       <MainRouter />
     </AppBody>
   );
 };
 
-const AppBody = styled.div`
-  background-color: #0b0b0b;
-`;
+const AppBody = styled.div``;
 
 const SideBarButton = styled(Icon)<{ sidebarOpen: boolean }>`
   display: none;

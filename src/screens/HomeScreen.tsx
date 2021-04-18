@@ -8,7 +8,7 @@ import { Center, Icon, PageContainer, Row, Spacer, TextButton } from '../ui';
 interface HomeScreenProps {}
 
 export const HomeScreen: React.FC<HomeScreenProps> = (props) => {
-  const ICON_SIZE = 30;
+  const ICON_SIZE = 26;
   const a = usePulse(core.base.state.SIDEBAR_OPEN);
   const social = [
     { icon: 'linkedin', link: 'https://www.linkedin.com/in/twanluttik/', color: '#0A66C2' },
@@ -22,31 +22,28 @@ export const HomeScreen: React.FC<HomeScreenProps> = (props) => {
   };
 
   return (
-    <HomeScreenBody>
-      <Row>
-        {social.map((v, i) => (
-          <SocialIcon key={i} name={v.icon} size={ICON_SIZE} color="#5B5E65" onClick={() => go(v.link)} />
-        ))}
-      </Row>
+    <PageContainer>
+      <Center>
+        <Row>
+          {social.map((v, i) => (
+            <SocialIcon key={i} name={v.icon} size={ICON_SIZE} color="white" onClick={() => go(v.link)} />
+          ))}
+        </Row>
+      </Center>
 
-      <Spacer amount={15}/>
-      <p style={{ opacity: 0.6}}>Im Twan, 21 years old. I like doing stuff with tech like programming or building computers or anything else related to tech i find interesting. From everything i like to program.</p>
-    </HomeScreenBody>
+      <Spacer amount={20} />
+
+      <Heading>More coming soon</Heading>
+    </PageContainer>
   );
 };
 
-const HomeScreenBody = styled(PageContainer)`
-  color: white;
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* height: 100%; */
-  /* min-height: 650px; */
-`;
-
 const SocialIcon = styled(Icon)`
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: 6px;
   margin: 0 10px;
+  padding: 10px;
+  background-color: black;
 
   &:nth-child(1) {
     margin-left: 0px;
@@ -57,14 +54,8 @@ const SocialIcon = styled(Icon)`
   }
 `;
 
-const ShortBio = styled.p`
-  line-height: 23px;
-  color: #c7c7c7;
-`;
-
-const SocialText = styled(TextButton)`
-  font-weight: 400;
-  opacity: 0.8;
-  color: white;
-  font-size: 18px;
+const Heading = styled.p`
+  font-weight: 800;
+  font-size: 22px;
+  text-align: center;
 `;
