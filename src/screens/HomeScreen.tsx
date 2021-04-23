@@ -1,20 +1,16 @@
-import { usePulse } from '@pulsejs/react';
 import * as React from 'react';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
-import core from '../core';
 
 import { Center, Icon, PageContainer, Row, Spacer, TextButton } from '../ui';
 
 interface HomeScreenProps {}
 
 export const HomeScreen: React.FC<HomeScreenProps> = (props) => {
-  const ICON_SIZE = 26;
-  const a = usePulse(core.base.state.SIDEBAR_OPEN);
-  const social = [
-    { icon: 'linkedin', link: 'https://www.linkedin.com/in/twanluttik/', color: '#0A66C2' },
-    { icon: 'twitter', link: 'https://twitter.com/twanluttik', color: '#1BA1F2' },
-    { icon: 'github', link: 'https://github.com/twanluttik', color: 'white' },
-    { icon: 'notify', link: 'https://notify.me/twan', color: '#3B60FF' },
+  const links = [
+    { emoij: '📱', title: 'Socials', link: '/socials' },
+    { emoij: '🏗️', title: 'Projects', link: '/projects' },
+    { emoij: '🖥️', title: 'Experience', link: '/experience' },
   ];
 
   const go = (a) => {
@@ -23,39 +19,37 @@ export const HomeScreen: React.FC<HomeScreenProps> = (props) => {
 
   return (
     <PageContainer>
+      <h2>Twan.Luttik</h2>
+      <Spacer amount={15} />
       <Center>
-        <Row>
-          {social.map((v, i) => (
-            <SocialIcon key={i} name={v.icon} size={ICON_SIZE} color="white" onClick={() => go(v.link)} />
+        <div>
+          {links.map((v, i) => (
+            <LinkText {...v} key={i} />
           ))}
-        </Row>
+        </div>
       </Center>
-
-      <Spacer amount={20} />
-
-      <Heading>More coming soon</Heading>
     </PageContainer>
   );
 };
 
-const SocialIcon = styled(Icon)`
-  cursor: pointer;
-  border-radius: 6px;
-  margin: 0 10px;
-  padding: 10px;
-  background-color: black;
+const LinkText: React.FC<{ title: string; link: string; emoij: string }> = (p) => {
+  const nav = useHistory();
 
-  &:nth-child(1) {
-    margin-left: 0px;
-  }
-  transition: opacity 0.2s ease;
-  &:hover {
-    opacity: 0.6;
-  }
+  return (
+    <LinkTextBody onClick={() => nav.push(p.link)}>
+      <Emoij>{p.emoij}</Emoij>
+      <Spacer amount={5} />
+      <Title>{p.title}</Title>
+    </LinkTextBody>
+  );
+};
+
+const LinkTextBody = styled(Row)`
+  cursor: pointer;
+  margin-bottom: 3px;
 `;
 
-const Heading = styled.p`
-  font-weight: 800;
-  font-size: 22px;
-  text-align: center;
+const Emoij = styled.p``;
+const Title = styled.p`
+  text-decoration: underline;
 `;

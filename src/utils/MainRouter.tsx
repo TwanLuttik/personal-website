@@ -5,32 +5,30 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 import { HomeScreen } from '../screens/HomeScreen';
 import { Projects } from '../screens/projects/Projects';
-import { Header } from '../parts/Header';
-import { Footer } from '../parts/Footer';
-import { Resume } from '../screens/resume/Resume';
-import { TimeLine } from '../screens/timeline/TimeLine';
+import { ExperienceScreen } from '../screens/experience/ExperienceScreen';
+import { SocialsScreen } from '../screens/socials/SocialsScreen';
 
 import './index.css';
-import { SideBar } from '../parts/SideBar';
 import { usePulse } from '@pulsejs/react';
 import core from '../core';
 
 export const MainRouter: React.FC = () => {
   const sidebarOpen = usePulse(core.base.state.SIDEBAR_OPEN);
   const location = useLocation();
+ 
   const routes = [
-    // {
-    //   path: '/projects',
-    //   comp: Projects,
-    // },
-    // {
-    //   path: '/resume',
-    //   comp: Resume,
-    // },
-    // {
-    //   path: '/timeline',
-    //   comp: TimeLine,
-    // },
+    {
+      path: '/socials',
+      comp: SocialsScreen,
+    },
+    {
+      path: '/experience',
+      comp: ExperienceScreen,
+    },
+    {
+      path: '/projects',
+      comp: Projects,
+    },
     {
       path: '/',
       comp: HomeScreen,

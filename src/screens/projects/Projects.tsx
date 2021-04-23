@@ -1,8 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { PageContainer, Spacer } from '../../ui';
-import { ProjectCard } from './parts/ProjectCard';
-import { projects } from './data';
+import { Project, projects } from './data';
 
 interface ProjectsProps {}
 
@@ -23,5 +22,13 @@ export const Projects: React.FC<ProjectsProps> = (props) => {
 };
 
 const ProjectsBody = styled(PageContainer)`
-  color: white;
+  color: black;
 `;
+
+const ProjectCard: React.FC<Project> = (p) => {
+  return (
+    <>
+      <p>{p.title}</p>
+    </>
+  );
+};
