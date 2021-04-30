@@ -5,12 +5,11 @@ import { App } from './App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router } from 'react-router-dom';
 import ReactGA from 'react-ga';
-import core from './core'
-
+import core from './core';
 
 if (process.env.NODE_ENV === 'production') {
   console.log('production build...');
-  
+
   ReactGA.initialize('UA-193152656-2');
   ReactGA.pageview(window.location.pathname + window.location.search);
 } else {
@@ -18,10 +17,11 @@ if (process.env.NODE_ENV === 'production') {
   window.core = core;
 }
 
-
 ReactDOM.render(
   <Router>
     <React.StrictMode>
+      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+      <meta name="apple-mobile-web-app-capable" content="yes" />
       <App />
     </React.StrictMode>
   </Router>,

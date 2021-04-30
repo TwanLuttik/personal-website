@@ -41,6 +41,6 @@ export const HomeScreen: React.FC<HomeScreenProps> = (props) => {
 };
 
 const SmallTitle = styled.p`
-  color: #777777;
+  color: #767676;
   font-weight: 600;
 `;
