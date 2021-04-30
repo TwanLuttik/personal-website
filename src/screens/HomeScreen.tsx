@@ -1,33 +1,42 @@
 import * as React from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
+import { IconButton, SmallButton } from '../parts/SmallButtom';
 
 import { Center, Icon, PageContainer, Row, Spacer, TextButton } from '../ui';
 
 interface HomeScreenProps {}
 
 export const HomeScreen: React.FC<HomeScreenProps> = (props) => {
-  const links = [
-    { emoij: '📱', title: 'Socials', link: '/socials' },
-    { emoij: '🏗️', title: 'Projects', link: '/projects' },
-    { emoij: '🖥️', title: 'Experience', link: '/experience' },
-  ];
-
   const go = (a) => {
     window.open(a);
   };
 
   return (
     <PageContainer>
-      <h2>Twan.Luttik</h2>
-      <Spacer amount={15} />
-      <Center>
-        <div>
-          {links.map((v, i) => (
-            <LinkText {...v} key={i} />
-          ))}
-        </div>
-      </Center>
+      <h2 style={{ color: '#626262' }}>Twan.Luttik</h2>
+      <Spacer amount={25} />
+
+      <SmallTitle>Projects</SmallTitle>
+      <Spacer amount={5} />
+      <Row>
+        <SmallButton background="#5eafff" color="white" style={{ width: 140 }} onClick={() => go('https://cheapestkeys.com') }>
+          Cheapestkeys
+        </SmallButton>
+      </Row>
+      <Spacer amount={30} />
+
+      <SmallTitle>Socials</SmallTitle>
+      <Spacer amount={5} />
+      <Row>
+        <IconButton icon="linkedin" onClick={() => go('https://linkedin.com/in/twanluttik/')} />
+        <Spacer amount={5} />
+        <IconButton icon="twitter" onClick={() => go('https://twitter.com/TwanLuttik')} />
+        <Spacer amount={5} />
+        <IconButton icon="github" onClick={() => go('https://github.com/TwanLuttik')} />
+        <Spacer amount={5} />
+        <IconButton icon="notify" onClick={() => go('https://notify.me/twan')} />
+      </Row>
     </PageContainer>
   );
 };
@@ -50,6 +59,10 @@ const LinkTextBody = styled(Row)`
 `;
 
 const Emoij = styled.p``;
+const SmallTitle = styled.p`
+  color: #777777;
+  font-weight: 600;
+`;
 const Title = styled.p`
   text-decoration: underline;
 `;

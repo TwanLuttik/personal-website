@@ -2,20 +2,22 @@
 
 .fade-enter {
   opacity: 0;
-  
+  z-index: 1;
 }
 
 .fade-enter-active {
   opacity: 1;
-
-  transition: opacity 300ms, transform 300ms;
+  z-index: 1;
+  transition: opacity 200ms;
 }
 
 .fade-exit {
+  z-index: 1;
   opacity: 1;
 }
 
 .fade-exit-active {
+  z-index: 1;
   opacity: 0;
-  transition: opacity 300ms, transform 300ms;
+  transition: opacity 200ms;
 }

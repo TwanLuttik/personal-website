@@ -4,12 +4,10 @@ import { Route, Switch, BrowserRouter as Router, useLocation } from 'react-route
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 import { HomeScreen } from '../screens/HomeScreen';
-import { Projects } from '../screens/projects/Projects';
-import { ExperienceScreen } from '../screens/experience/ExperienceScreen';
-import { SocialsScreen } from '../screens/socials/SocialsScreen';
+
 
 import './index.css';
-import { usePulse } from '@pulsejs/react';
+import { usePulse } from '@pulsejs/react'; 
 import core from '../core';
 
 export const MainRouter: React.FC = () => {
@@ -17,18 +15,18 @@ export const MainRouter: React.FC = () => {
   const location = useLocation();
  
   const routes = [
-    {
-      path: '/socials',
-      comp: SocialsScreen,
-    },
-    {
-      path: '/experience',
-      comp: ExperienceScreen,
-    },
-    {
-      path: '/projects',
-      comp: Projects,
-    },
+    // {
+    //   path: '/socials',
+    //   comp: SocialsScreen,
+    // },
+    // {
+    //   path: '/experience',
+    //   comp: ExperienceScreen,
+    // },
+    // {
+    //   path: '/projects',
+    //   comp: Projects,
+    // },
     {
       path: '/',
       comp: HomeScreen,
@@ -39,7 +37,7 @@ export const MainRouter: React.FC = () => {
     <Container>
       {/* <SideBar /> */}
       <TransitionGroup>
-        <CSSTransition timeout={300} classNames="fade" key={location.key}>
+        <CSSTransition timeout={300} classNames="fade" key={location.key} >
           <Switch location={location}>
             {routes.map((v, i) => (
               <Route key={i} path={v.path} component={v.comp} exact />

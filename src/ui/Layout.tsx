@@ -38,15 +38,11 @@ const ContainerBoday = styled.div`
   display: flex;
   flex-direction: column;
   padding: 15px;
-  /* padding: 0px 20px; */
-  /* padding-left: 10px; */
-  /* margin: 0 auto; */
   @media only screen and (min-width: 800px) {
     max-width: 800px;
     width: 100%;
     padding: 0px 20px;
   }
-  
 `;
 
 interface CenterProps {
