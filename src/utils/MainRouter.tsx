@@ -9,6 +9,8 @@ import { HomeScreen } from '../screens/HomeScreen';
 import './index.css';
 import { usePulse } from '@pulsejs/react'; 
 import core from '../core';
+import { Footer } from '../parts/Footer';
+import { Fill } from '../ui';
 
 export const MainRouter: React.FC = () => {
   const sidebarOpen = usePulse(core.base.state.SIDEBAR_OPEN);
@@ -35,7 +37,6 @@ export const MainRouter: React.FC = () => {
 
   return (
     <Container>
-      {/* <SideBar /> */}
       <TransitionGroup>
         <CSSTransition timeout={300} classNames="fade" key={location.key} >
           <Switch location={location}>
@@ -45,6 +46,8 @@ export const MainRouter: React.FC = () => {
           </Switch>
         </CSSTransition>
       </TransitionGroup>
+      <Fill />
+      <Footer />
     </Container>
   );
 };
@@ -52,5 +55,7 @@ export const MainRouter: React.FC = () => {
 const Container = styled.div`
   height: calc(100vh);
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
 `;

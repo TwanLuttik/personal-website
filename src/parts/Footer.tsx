@@ -9,18 +9,16 @@ export const Footer: React.FC<FooterProps> = (props) => {
 
   return (
     <FooterBody>
-      <GradiantLine />
       <Container>
         <Credit>
-          <p>🔥</p>
           <Spacer amount={8} />
-          <p>Created By</p>
+          <p>Created by</p>
           <Spacer amount={4} />
           <Highlight>Twan Luttik</Highlight>
           <Spacer amount={4} />
-          <p>& Hosted on </p>
+          <p>& hosted on </p>
           <Spacer amount={4} />
-          <Highlight>vercel.com</Highlight>
+          <Highlight>vercel</Highlight>
         </Credit>
       </Container>
     </FooterBody>
@@ -28,33 +26,26 @@ export const Footer: React.FC<FooterProps> = (props) => {
 };
 
 const FooterBody = styled.div`
-  height: 50px;
-  position: sticky;
-  bottom: 0;
+  /* height: 50px; */
   width: 100%;
-  color: #686868;
-  background: black;
+  background: #ececec;
+  color: #7f7f7f;
+  font-size: 15px;
 `;
 
-const GradiantLine = styled.div`
-  width: 100%;
-  height: 1px;
-  position: absolute;
-  background: #222222;
-  background: linear-gradient(45deg, #8678f3, #ce3863);
-`;
 
 const Highlight = styled.p`
   font-weight: 500;
-  color: white;
+  color: #515151;
 `;
 
 const Container = styled(PageContainer)`
   justify-content: center;
-  height: 100%;
+  padding: 10px;
 `;
 
 const Credit = styled(Row)`
   white-space: nowrap;
   flex-wrap: wrap;
+  justify-content: center;
 `;

@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { IconButton, SmallButton } from '../parts/SmallButtom';
 
-import { Center, Icon, PageContainer, Row, Spacer, TextButton } from '../ui';
+import { Center, Icon, PageContainer, Row, Spacer } from '../ui';
 
 interface HomeScreenProps {}
 
@@ -41,28 +40,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = (props) => {
   );
 };
 
-const LinkText: React.FC<{ title: string; link: string; emoij: string }> = (p) => {
-  const nav = useHistory();
-
-  return (
-    <LinkTextBody onClick={() => nav.push(p.link)}>
-      <Emoij>{p.emoij}</Emoij>
-      <Spacer amount={5} />
-      <Title>{p.title}</Title>
-    </LinkTextBody>
-  );
-};
-
-const LinkTextBody = styled(Row)`
-  cursor: pointer;
-  margin-bottom: 3px;
-`;
-
-const Emoij = styled.p``;
 const SmallTitle = styled.p`
   color: #777777;
   font-weight: 600;
-`;
-const Title = styled.p`
-  text-decoration: underline;
 `;

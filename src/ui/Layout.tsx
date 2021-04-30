@@ -28,7 +28,6 @@ export const Row: React.FC<RowProps> = (props) => {
 export const PageContainer: React.FC<{ style?: CSSProperties; className?: string }> = (props) => {
   return (
     <ContainerBoday className={props.className} style={props.style} {...props}>
-      <Spacer amount={50} />
       {props.children}
     </ContainerBoday>
   );
