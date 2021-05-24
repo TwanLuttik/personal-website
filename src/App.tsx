@@ -1,6 +1,7 @@
-import { Badge, Button, Container, HStack, Wrap, WrapItem } from '@chakra-ui/react';
+import { Badge, Button, Container, Wrap, WrapItem } from '@chakra-ui/react';
 import * as React from 'react';
 import { Icon } from './parts/Icon/Icon';
+import { Spacer } from './parts/index';
 import styled from 'styled-components';
 
 export const App: React.FC = () => {
@@ -34,12 +35,24 @@ export const App: React.FC = () => {
 			name: 'Notify',
 		},
 	];
+
+	const projects = [
+		{ text: 'Cheapestkeys', icon: 'cheapestkeys', link: 'https://cheapestkeys.com', color: '#060A0E', name: 'Cheapestkeys' },
+		{ text: 'Notify', icon: 'notify', link: 'https://notify.me', color: '#2E4EDA', name: 'Notify' },
+	];
+
+	const programmingSkills = [
+		{ text: 'JAVASCRIPT', colorScheme: 'green' },
+		{ text: 'TYPESCRIPT', colorScheme: 'orange' },
+		{ text: 'react js', colorScheme: 'blue' },
+		{ text: 'react native', colorScheme: 'purple' },
+	];
 	return (
 		<AppBody>
 			<Container>
 				<br />
 				<Heading>Twan Luttik</Heading>
-				<br />
+				<Spacer size={4} />
 				<Wrap justify="center">
 					{socials.map((v, i) => (
 						<WrapItem key={i}>
@@ -49,13 +62,29 @@ export const App: React.FC = () => {
 						</WrapItem>
 					))}
 				</Wrap>
-				<br />
-				{/* <HStack justifyContent="center">
-					<Badge colorScheme="green">Javascript</Badge>
-					<Badge colorScheme="orange">Typescript</Badge>
-					<Badge colorScheme="blue">React Js</Badge>
-					<Badge colorScheme="purple">React Native</Badge>
-				</HStack> */}
+
+				<Spacer size={20} />
+				<SmallHeading>Projects/Work</SmallHeading>
+				<Spacer size={4} />
+				<Wrap justify="center">
+					{projects.map((v, i) => (
+						<WrapItem key={i}>
+							<Button onClick={() => go(v.link)} backgroundColor={v.color} textColor="white" leftIcon={<Icon key={i} name={v.icon} size={20} color="white" />}>
+								{v.name}
+							</Button>
+						</WrapItem>
+					))}
+				</Wrap>
+				{/* <SmallHeading>Programming Skills</SmallHeading>
+				<Spacer size={4} />
+				<Wrap justify="center">
+					{programmingSkills.map((v, i) => (
+						<WrapItem key={i}>
+							<Badge colorScheme={v.colorScheme}>{v.text}</Badge>
+						</WrapItem>
+					))}
+				</Wrap>
+			 */}
 			</Container>
 		</AppBody>
 	);
@@ -74,8 +103,15 @@ const AppBody = styled.div`
 		}
 	}
 `;
+
 const Heading = styled.h2`
 	font-weight: bold;
 	font-size: 30px;
+	text-align: center;
+`;
+
+const SmallHeading = styled.p`
+	font-weight: bold;
+	font-size: 18px;
 	text-align: center;
 `;
