@@ -56,35 +56,37 @@ export const Main: React.FC<MainProps> = (props) => {
 
 	return (
 		<MainBody>
-			<TextEntry style={{ fontSize: 20 }}>Twan Luttik</TextEntry>
-			<br />
-			<LineBox>
-				{socials.map((item, index) => (
-					<SelectionEntry
-						key={index}
-						text={item.name}
-						icon={item.icon}
-						onClick={() => go(item.link)}
-					/>
-				))}
+			<LineContainer>
+				<TextEntry style={{ fontSize: 20 }}>Twan Luttik</TextEntry>
+				<br />
+				<LineBox>
+					{socials.map((item, index) => (
+						<SelectionEntry
+							key={index}
+							text={item.name}
+							icon={item.icon}
+							onClick={() => go(item.link)}
+						/>
+					))}
 
-				{/* <SelectionEntry text="Twitter" icon="twitter" /> */}
-				{/* <SelectionEntry text="Github" icon="github" /> */}
-			</LineBox>
-			<br />
-			<br />
-			<TextEntry style={{ fontSize: 20 }}>Work / Projects</TextEntry>
-			<br />
-			<LineBox>
-				{projects.map((item, index) => (
-					<SelectionEntry
-						key={index}
-						text={item.name}
-						icon={item.icon}
-						onClick={() => go(item.link)}
-					/>
-				))}
-			</LineBox>
+					{/* <SelectionEntry text="Twitter" icon="twitter" /> */}
+					{/* <SelectionEntry text="Github" icon="github" /> */}
+				</LineBox>
+				<br />
+				<br />
+				<TextEntry style={{ fontSize: 20 }}>Work / Projects</TextEntry>
+				<br />
+				<LineBox>
+					{projects.map((item, index) => (
+						<SelectionEntry
+							key={index}
+							text={item.name}
+							icon={item.icon}
+							onClick={() => go(item.link)}
+						/>
+					))}
+				</LineBox>
+			</LineContainer>
 		</MainBody>
 	);
 };
@@ -95,6 +97,19 @@ const MainBody = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+`;
+
+const LineContainer = styled.div`
+	height: 100%;
+	width: calc(100% - 20px);
+	margin: 10px;
+	border-radius: 5px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border: solid 1px #707070;
+
 `;
 
 const LineBox = styled.div`
