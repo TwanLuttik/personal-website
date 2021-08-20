@@ -20,6 +20,29 @@ const socials = [
 		link: 'https://linkedin.com/in/twanluttik',
 		name: 'Linkedin',
 	},
+	{
+		icon: 'instagram',
+		link: 'https://instagram.com/twanluttik',
+		name: 'Instagram',
+	},
+];
+
+const projects = [
+	{
+		icon: 'treasure',
+		link: '',
+		name: '???...',
+	},
+	{
+		icon: 'Notify.me',
+		link: 'https://ohsnapmagic.com',
+		name: 'OHSNAPMAGIC.COM',
+	},
+	{
+		icon: 'Notify.me',
+		link: 'https://notify.me',
+		name: 'Notify.me',
+	},
 ];
 
 export const Main: React.FC<MainProps> = (props) => {
@@ -44,8 +67,23 @@ export const Main: React.FC<MainProps> = (props) => {
 						onClick={() => go(item.link)}
 					/>
 				))}
+
 				{/* <SelectionEntry text="Twitter" icon="twitter" /> */}
 				{/* <SelectionEntry text="Github" icon="github" /> */}
+			</LineBox>
+			<br />
+			<br />
+			<TextEntry style={{ fontSize: 20 }}>Work / Projects</TextEntry>
+			<br />
+			<LineBox>
+				{projects.map((item, index) => (
+					<SelectionEntry
+						key={index}
+						text={item.name}
+						icon={item.icon}
+						onClick={() => go(item.link)}
+					/>
+				))}
 			</LineBox>
 		</MainBody>
 	);

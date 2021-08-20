@@ -7,6 +7,8 @@ interface AppProps {}
 export const App: React.FC<AppProps> = (props) => {
 	const {} = props;
 
+	document.title = 'Twan Luttik'
+
 	return (
 		<AppBody>
 			<Main />
