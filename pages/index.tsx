@@ -1,6 +1,8 @@
+import { NextPage } from 'next';
+import Head from 'next/head';
 import * as React from 'react';
 import styled from 'styled-components';
-import { Icon, Fill } from '../parts';
+import { Icon, Fill, Row, Spacer } from '../parts';
 
 interface MainProps {}
 
@@ -45,7 +47,7 @@ const projects = [
 	},
 ];
 
-export const Main: React.FC<MainProps> = (props) => {
+const Main: NextPage = (props) => {
 	const {} = props;
 
 	const [Selected, setSelected] = React.useState('');
@@ -56,7 +58,11 @@ export const Main: React.FC<MainProps> = (props) => {
 
 	return (
 		<MainBody>
+			<Head>
+				<title>Twan Luttik</title>
+			</Head>
 			<LineContainer>
+				<Fill />
 				<TextEntry style={{ fontSize: 20 }}>Twan Luttik</TextEntry>
 				<br />
 				<LineBox>
@@ -86,6 +92,13 @@ export const Main: React.FC<MainProps> = (props) => {
 						/>
 					))}
 				</LineBox>
+				<Fill />
+				<BottomCredit>
+					<p style={{ color: 'white' }}>Powered By NextJS</p>
+					<Spacer size={5} />
+					<Icon name="lightning" size={16} color="white" />
+				</BottomCredit>
+				<br />
 			</LineContainer>
 		</MainBody>
 	);
@@ -109,7 +122,6 @@ const LineContainer = styled.div`
 	justify-content: center;
 	align-items: center;
 	border: solid 1px #707070;
-
 `;
 
 const LineBox = styled.div`
@@ -205,3 +217,15 @@ const TextEntry = styled.p`
 	user-select: none;
 	transition: color 0.2s ease;
 `;
+
+const BottomCredit = styled(Row)`
+	opacity: 0.3;
+	cursor: default;
+
+	transition: opacity 0.3s ease;
+	&:hover {
+		opacity: 1;
+	}
+`;
+
+export default Main;
