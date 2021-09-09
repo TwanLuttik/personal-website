@@ -1,4 +1,5 @@
 import { NextPage } from 'next';
+import Image from 'next/image';
 import Head from 'next/head';
 import * as React from 'react';
 import styled from 'styled-components';
@@ -58,6 +59,7 @@ const Main: NextPage = (props) => {
 
 	return (
 		<MainBody>
+			<BackgroundImage src="../public/picture.jpg" alt="main_picture" />
 			<Head>
 				<title>Twan Luttik</title>
 			</Head>
@@ -128,6 +130,16 @@ const LineBox = styled.div`
 	padding: 15px;
 	border-radius: 5px;
 	border: solid 1px #707070;
+`;
+
+const BackgroundImage = styled(Image)`
+	position: absolute;
+	top: 0px;
+	left: 0px;
+
+	height: 100%;
+	z-index: 10;
+	width: 100%;
 `;
 
 const SelectionEntry: React.FC<{
