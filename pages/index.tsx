@@ -4,6 +4,7 @@ import Head from 'next/head';
 import * as React from 'react';
 import styled from 'styled-components';
 import { Icon, Fill, Row, Spacer } from '../parts';
+import image_1 from '../public/picture.jpg';
 
 interface MainProps {}
 
@@ -59,7 +60,6 @@ const Main: NextPage = (props) => {
 
 	return (
 		<MainBody>
-			<BackgroundImage src="../public/picture.jpg" alt="main_picture" />
 			<Head>
 				<title>Twan Luttik</title>
 			</Head>
@@ -108,6 +108,7 @@ const Main: NextPage = (props) => {
 
 const MainBody = styled.div`
 	height: 100%;
+	background-color: black;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -115,6 +116,7 @@ const MainBody = styled.div`
 `;
 
 const LineContainer = styled.div`
+	z-index: 50;
 	height: 100%;
 	width: calc(100% - 20px);
 	margin: 10px;
@@ -123,23 +125,24 @@ const LineContainer = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	border: solid 1px #707070;
+	border: solid 1px white;
 `;
 
 const LineBox = styled.div`
 	padding: 15px;
 	border-radius: 5px;
-	border: solid 1px #707070;
+	border: solid 1px white;
 `;
 
 const BackgroundImage = styled(Image)`
 	position: absolute;
-	top: 0px;
-	left: 0px;
+	opacity: 0.5;
+	top: 0;
+	left: 0;
 
+	/* width: 100%; */
 	height: 100%;
 	z-index: 10;
-	width: 100%;
 `;
 
 const SelectionEntry: React.FC<{
