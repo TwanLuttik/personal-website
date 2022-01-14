@@ -1,7 +1,5 @@
 import type { NextPage } from 'next';
-import Head from 'next/head';
-import Image from 'next/image';
-import styles from '../styles/Home.module.css';
+import NextHead from 'next/head';
 import styled from 'styled-components';
 import TwanImg from '../public/twan.png';
 import { BoxWrapper, Row, Spacer } from '../components';
@@ -11,6 +9,10 @@ const Home: NextPage = () => {
 
 	return (
 		<HomeBody>
+			<NextHead>
+				<title>Twan Luttik</title>
+				<meta name="theme-color" content="#090e1c" />
+			</NextHead>
 			<Spacer size={30} />
 			<BoxWrapper>
 				<Row>

@@ -3,13 +3,14 @@ import type { AppProps } from 'next/app';
 import { Footer } from '../components/Footer';
 import styled from 'styled-components';
 import Head from 'next/head';
+import NextHead from 'next/head';
 
 function MyApp({ Component, pageProps }: AppProps) {
 	return <PageBody>
-		<Head>
+		<NextHead>
 			<title>Twan Luttik</title>
 			<meta name="theme-color" content="#090e1c" />
-		</Head>
+		</NextHead>
 		<Component {...pageProps} />
 		<Footer />
 	</PageBody>;
