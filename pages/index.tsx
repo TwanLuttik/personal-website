@@ -53,7 +53,7 @@ const Home: NextPage = () => {
 					<TextLink
 						onClick={() => window.open('https://twitter.com/yourstatusapp')}
 					>
-						YourStatus App
+						yourstatus.app
 					</TextLink>
 				</Row>
 				<Spacer size={10} />
@@ -74,9 +74,22 @@ const Home: NextPage = () => {
 				</Row>
 
 				<Spacer size={40} />
-				<p style={{ fontSize: 17, opacity: 0.4, fontStyle: 'italic' }}>
-					You can follow my social at @twanluttik
+				<p style={{ marginBottom: 10, fontSize: 18, fontWeight: 'bolder' }}>
+					My socials:
 				</p>
+				<TextLink
+					onClick={() => window.open('https://instagram.com/twanluttik')}
+				>
+					instagram
+				</TextLink>
+				<Spacer size={2} />
+				<TextLink onClick={() => window.open('https://twitter.com/twanluttik')}>
+					twitter
+				</TextLink>
+				<Spacer size={2} />
+				<TextLink onClick={() => window.open('https://github.com/twanluttik')}>
+					github
+				</TextLink>
 			</BoxWrapper>
 		</HomeBody>
 	);
