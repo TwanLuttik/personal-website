@@ -6,19 +6,22 @@ import Head from 'next/head';
 import NextHead from 'next/head';
 
 function MyApp({ Component, pageProps }: AppProps) {
-	return <PageBody>
-		<NextHead>
-			<title>Twan Luttik</title>
-			<meta name="theme-color" content="#090e1c" />
-		</NextHead>
-		<Component {...pageProps} />
-		<Footer />
-	</PageBody>;
+	return (
+		<PageBody>
+			<NextHead>
+				<title>Twan Luttik</title>
+				<meta name="theme-color" content="#090e1c" />
+			</NextHead>
+			<Component {...pageProps} />
+			<Footer />
+		</PageBody>
+	);
 }
 
 const PageBody = styled.div`
-  background-color: #090e1c;
-  height: calc(100% - 60px);
+	background-color: #090e1c;
+	height: calc(100%);
+	overflow-y: scroll;
 `;
 
 export default MyApp;
