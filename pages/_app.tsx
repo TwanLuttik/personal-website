@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
 const PageBody = styled.div`
 	background-color: #090e1c;
-	height: calc(100%);
+	height: calc(100% - 60px);
 	overflow-y: unset;
 `;
 

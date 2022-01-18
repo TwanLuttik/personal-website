@@ -13,8 +13,10 @@ const Home: NextPage = () => {
 				<title>Twan Luttik</title>
 				<meta name="theme-color" content="#090e1c" />
 			</NextHead>
-			<Spacer size={30} />
+
 			<BoxWrapper>
+				<Spacer size={30} />
+
 				<Row>
 					{emoijs.map((item, index) => (
 						<Row key={index}>
@@ -104,8 +106,8 @@ const Home: NextPage = () => {
 				>
 					linkedin
 				</TextLink>
+				<Spacer size={40} />
 			</BoxWrapper>
-			<Spacer size={30} />
 		</HomeBody>
 	);
 };
@@ -143,6 +145,9 @@ const CardItem = styled(Row)`
 const HomeBody = styled.div`
 	color: white;
 	background-color: #090e1c;
+	display: flex;
+	flex: 1;
+	min-height: 100%;
 `;
 
 const ProfileImg = styled.img`
