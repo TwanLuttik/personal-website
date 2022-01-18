@@ -9,8 +9,13 @@ body {
 	font-family: 'Nunito', sans-serif;
 }
 
+body {
+	overflow-y: auto;
+}
+
 #__next {
 	height: 100%;
+	overflow-y: unset;
 }
 
 a {

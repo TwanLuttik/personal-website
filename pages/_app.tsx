@@ -21,7 +21,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 const PageBody = styled.div`
 	background-color: #090e1c;
 	height: calc(100%);
-	overflow-y: scroll;
+	overflow-y: unset;
 `;
 
 export default MyApp;
