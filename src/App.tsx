@@ -58,30 +58,7 @@ export const App = () => {
 
         <div style={{ marginTop: 60 }}>
           {projects.map((item, index) => (
-            <div
-              className="projectCard"
-              key={`id-${index}`}
-              // onMouseMove={(item) => {
-              //   let x = Math.abs(
-              //     item.currentTarget.getBoundingClientRect().x - item.clientX
-              //   );
-              //   // Get the y position relative to the button
-              //   let y = Math.abs(
-              //     item.currentTarget.getBoundingClientRect().y - item.clientY
-              //   );
-              //   let halfWidth =
-              //     item.currentTarget.getBoundingClientRect().width / 2;
-              //   let halfHeight =
-              //     item.currentTarget.getBoundingClientRect().height / 2;
-
-              //   let calcAngleX = (x - halfWidth) / 6;
-              //   let calcAngleY = (y - halfHeight) / 14;
-              //   console.log(calcAngleX);
-
-              //   item.currentTarget.style.transform = `rotate3d(${!calcAngleX}, ${1}, 0, 20deg)`;
-              //   // item.currentTarget.style.transform = `rotateY(${calcAngleX}deg) rotateX(${-calcAngleY}deg) scale(1.04)`;
-              // }}
-            >
+            <div className="projectCard" key={`id-${index}`}>
               <p>{item.display_name}</p>
               <p className="description">{item.description}</p>
               <button onClick={() => window.location.assign(item.link)}>
