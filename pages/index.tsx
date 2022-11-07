@@ -148,4 +148,6 @@ const TagText = styled.div<{ color: string }>`
   color: white;
   width: fit-content;
   margin-bottom: 4px;
+  user-select: none;
+  cursor: default;
 `;
