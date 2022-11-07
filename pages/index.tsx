@@ -50,8 +50,9 @@ export default function Home() {
           <HeadingTitle>📝 My Skills</HeadingTitle>
           <TagText color="#9f760e">Javascript/Typescript/NodeJs</TagText>
           <TagText color="#4e6ddb">React/React-Native (+Typescript)</TagText>
-          <TagText color="#50913a">GPC/AWS</TagText>
           <TagText color="#3a9187">Postgres/SQL Query</TagText>
+          <TagText color="#50913a">GCP/AWS</TagText>
+          <TagText color="#703a91">Graphql</TagText>
         </div>
 
         <div style={{ marginTop: 50 }}>
