@@ -1,14 +1,14 @@
-import dayjs from "dayjs";
 import Head from "next/head";
 import Image from "next/image";
 import styled from "styled-components";
 import { PageLayout } from "../components/PageLayout";
+import dayjs from "dayjs";
 
-const getServerSideProps = () => {
-  return dayjs().format("YYYY-MM-DD, HH:mm:ss");
+const getServerSideProps = (context: any) => {
+  return { build_time: dayjs().format("YYYY-MM-DD, HH:mm:ss") };
 };
 
-export default function Home() {
+export default function Home({ build_time }) {
   const goTo = (s: string) => {
     window.location.assign(s);
   };
@@ -97,7 +97,7 @@ export default function Home() {
             paddingBottom: 10,
           }}
         >
-          Build at: {getServerSideProps()}
+          Build at: {build_time}
         </p>
       </PageLayout>
     </HomeBody>
