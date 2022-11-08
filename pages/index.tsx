@@ -4,11 +4,7 @@ import styled from "styled-components";
 import { PageLayout } from "../components/PageLayout";
 import dayjs from "dayjs";
 
-const getServerSideProps = (context: any) => {
-  return { build_time: dayjs().format("YYYY-MM-DD, HH:mm:ss") };
-};
-
-export default function Home({ build_time }) {
+export default function Home({}) {
   const goTo = (s: string) => {
     window.location.assign(s);
   };
@@ -97,7 +93,7 @@ export default function Home({ build_time }) {
             paddingBottom: 10,
           }}
         >
-          Build at: {build_time}
+          Build at: {dayjs().format("YYYY-MM-DD, HH:mm:ss")}
         </p>
       </PageLayout>
     </HomeBody>
