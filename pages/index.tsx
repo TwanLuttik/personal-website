@@ -4,6 +4,10 @@ import Image from "next/image";
 import styled from "styled-components";
 import { PageLayout } from "../components/PageLayout";
 
+const getServerSideProps = () => {
+  return dayjs().format("YYYY-MM-DD, HH:mm:ss");
+};
+
 export default function Home() {
   const goTo = (s: string) => {
     window.location.assign(s);
@@ -93,7 +97,7 @@ export default function Home() {
             paddingBottom: 10,
           }}
         >
-          {dayjs().format("YYYY-MM-DD, HH:mm:ss")}
+          Build at: {getServerSideProps()}
         </p>
       </PageLayout>
     </HomeBody>
