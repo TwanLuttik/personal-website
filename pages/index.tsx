@@ -103,6 +103,14 @@ export default function Home({}) {
 const HomeBody = styled.div`
   height: 100%;
   color: #383838;
+  @media (prefers-color-scheme: dark) {
+    background-color: black;
+    color: white;
+  }
+  @media (prefers-color-scheme: light) {
+    background-color: white;
+    color: black;
+  }
 `;
 
 const LinkBox = styled.div`
@@ -114,15 +122,35 @@ const LinkBox = styled.div`
   user-select: none;
   margin-left: -5px;
 
-  :hover {
-    /* text-decoration: underline; */
+  @media (prefers-color-scheme: dark) {
+    :hover {
+      background-color: #969696;
+      color: #efefef;
+    }
+    :active {
+      background-color: #ffffff;
+      color: #4d4d4d;
+    }
+  }
+  @media (prefers-color-scheme: light) {
+    :hover {
+      background-color: #;969696
+      color: #efefef;
+    }
+    :active {
+      background-color: #ffffff;
+      color: #4d4d4d;
+    }
+  }
+
+  /* :hover {
     background-color: #efefef;
     color: #969696;
   }
   :active {
     background-color: #4d4d4d;
     color: #ffffff;
-  }
+  } */
 
   transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
 `;
