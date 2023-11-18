@@ -5,10 +5,10 @@ const Page = () => {
 		<div className="bg-black h-full w-full p-4">
 			<p>Easy QR Scany</p>
 			<div className="flex flex-col mt-4">
-				<Link href={"Policy"}>
+				<Link href={"easy_qr_scan/policy"}>
 					<p className="hover:underline">Policy</p>
 				</Link>
-				<Link href={"Support"}>
+				<Link href={"easy_qr_scan/support"}>
 					<p className="hover:underline">Terms</p>
 				</Link>
 			</div>

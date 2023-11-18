@@ -1,7 +1,7 @@
 const Page = () => {
 	return (
 		<div>
-			<p>Contact: Twan Luttik on x.com for any questions</p>
+			<p>No policy for a free app with 1 function that is, scanning qr codes</p>
 		</div>
 	);
 };
