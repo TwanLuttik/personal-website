@@ -8,35 +8,55 @@ export default function Home() {
 	};
 
 	return (
-		<div className="flex h-full w-full items-center justify-center bg-black">
-			<div className="flex flex-col">
-				<Image
-					src="/assets/me.jpg"
-					alt="me"
-					width="150"
-					height="150"
-					className="mb-6 rounded-2xl"
-				/>
-				<p className="text-2xl font-semibold">Twan Luttik</p>
-				<p className="mt-1 font-light text-white italic">
-					...A simple software engineer that likes katsu curry
-				</p>
-
-				<div className="mt-6">
+		<div className="flex h-full w-full items-center justify-center bg-black py-10">
+			<div className="mx-auto flex h-full w-full max-w-screen-xl flex-col px-10">
+				<div className="mb-4">
+					<p className="font-bold mb-2">TWAN LUTTIK</p>
+					<p className="font-bold">CANADA, VANCOUVER</p>
+					<p className="font-bold">SOFTWARE ENGINEER</p>
+				</div>
+				<p className="mt-10 text-2xl font-semibold tracking-tight">Socials</p>
+				<div className="mt-2 flex flex-col gap-y-0.5">
 					<LinkComp baseUrl="x.com" afterUrl="/twanluttik" />
-					<LinkComp baseUrl="github.com" afterUrl="/twanluttik" />
 					<LinkComp baseUrl="linkedin.com" afterUrl="/in/twanluttik" />
+					<LinkComp baseUrl="github.com" afterUrl="/twanluttik" />
 				</div>
 
-				<p className="mt-10 font-medium">Projects</p>
-				<p
-					className="cursor-pointer text-white/60 hover:underline"
-					onClick={() => {
-						openLink("https://streambk.com");
-					}}
-				>
-					streambk.com
-				</p>
+				<p className="mt-10 text-2xl font-semibold tracking-tight">Projects</p>
+				<div className="mt-2 flex flex-col gap-y-0.5">
+					<div className="group mb-4">
+						<p
+							className="cursor-pointer text-green-400 transition-all group-hover:underline "
+							onClick={() => {
+								openLink("https://coatcheck.app");
+							}}
+						>
+							coatcheck.app
+						</p>
+						<p className="opacity-70 transition-all group-hover:opacity-100">
+							Cirtualize your coat ticket for the club or the bar and never lose
+							it again.
+						</p>
+					</div>
+					<div className="group mb-4">
+						<div className="flex flex-row gap-x-2">
+							<p
+								className="cursor-pointer text-green-400 group-hover:underline"
+								onClick={() => {
+									openLink("https://streambk.com");
+								}}
+							>
+								streambk.com
+							</p>
+							<p className="italic text-orange-500">(low priority)</p>
+						</div>
+						<p className="opacity-70 transition-all group-hover:opacity-100 ">
+							Streambk is a audio collaboration tool where you can leave notes
+							behind on the audio with a timestamp.
+						</p>
+					</div>
+				</div>
+
 			</div>
 		</div>
 	);
@@ -55,11 +75,11 @@ const LinkComp = ({
 
 	return (
 		<div
-			className="group flex flex-row cursor-pointer"
+			className="group flex w-fit cursor-pointer flex-row"
 			onClick={() => openLink(`https://${baseUrl}/${afterUrl}`)}
 		>
 			<p className="text-white/60">{baseUrl}</p>
-			<p className="text-white/60 group-hover:text-white transition">
+			<p className="text-white/60 transition-all group-hover:font-semibold group-hover:text-white">
 				{afterUrl}
 			</p>
 		</div>
