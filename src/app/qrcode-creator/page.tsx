@@ -14,7 +14,7 @@ const Page = () => {
 				</Link>
 			</div>
 		</div>
-	);
+	)
 };
 
 export default Page;

@@ -14,7 +14,7 @@ export default function Home() {
 			<div className="mx-auto flex h-full w-full max-w-screen-xl flex-col px-10">
 				<div className="mb-4">
 					<p className="font-bold text-4xl mb-2">TWAN LUTTIK</p>
-					<p className="font-bold mb-10">I'm a simple software engineer</p>
+					<p className="font-bold mb-10">I{`'`}m a simple software engineer</p>
 
 					<div className="flex flex-row">
 						<GrLocationPin size={20} className="mr-1" />
