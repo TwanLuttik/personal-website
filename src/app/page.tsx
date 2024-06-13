@@ -1,4 +1,3 @@
-"use client";
 import { GrLocationPin } from "react-icons/gr";
 import { FaMusic } from "react-icons/fa";
 
