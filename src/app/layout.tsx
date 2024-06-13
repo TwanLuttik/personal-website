@@ -1,22 +1,28 @@
-import type { Metadata } from 'next'
-import { GeistSans } from 'geist/font/sans'
-import './globals.css'
-import Script from 'next/script'
+import "./globals.css";
+
+import type { Metadata } from "next";
+import { GeistSans } from "geist/font/sans";
+import PlausibleProvider from "next-plausible";
 
 export const metadata: Metadata = {
-  title: 'Twan Luttik',
-  description: 'Welcome into my place',
-}
+  title: "Twan Luttik",
+  description: "Welcome into my place",
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
-      <Script defer data-domain="twanluttik.com" src="https://plausible.io/js/script.js"></Script>
-      <body className={GeistSans.className}>{children}</body>
+      <body className={GeistSans.className}>
+        <div className="h-full">
+          <PlausibleProvider domain="twanluttik.com">
+            {children}
+          </PlausibleProvider>
+        </div>
+      </body>
     </html>
-  )
+  );
 }
