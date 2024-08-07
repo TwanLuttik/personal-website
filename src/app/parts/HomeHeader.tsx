@@ -19,7 +19,7 @@ export default function Component() {
         <Link href="/">
           <Button
             variant="link"
-            className="h-5 p-1 text-white"
+            className="h-5 p-1"
             style={{ opacity: pathname === "/" ? 1 : 0.5 }}
           >
             Home
@@ -29,7 +29,7 @@ export default function Component() {
           <Link href={item.path} key={index}>
             <Button
               variant="link"
-              className="h-5 p-1 text-white"
+              className="h-5 p-1"
               style={{ opacity: pathname?.includes(item.path) ? 1 : 0.5 }}
             >
               {item.name}
