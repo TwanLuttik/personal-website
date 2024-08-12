@@ -1,33 +1,48 @@
-"use client";
+import { Assets } from "@/constants";
+import Image from "next/image";
+import { LinkBtn } from "./parts/LinkBtn";
 
+export interface ProjectType {
+  title: string;
+  link: string;
+  description: string;
+  images_url?: string;
+}
+
+const Projects: ProjectType[] = [
+  {
+    title: "CoatCheck",
+    link: "https://coatcheck.app",
+    description:
+      "Replacing the paper ticketws and much easier for your customers at busy places they visit.",
+    images_url: Assets.CoatcheckPreview,
+  },
+  {
+    title: "Streambk",
+    link: "https://streambk.com",
+    description: "Collaborate by placing notes on a timestamp",
+  },
+];
 const Page = () => {
-  const openLink = (e: string) => {
-    window.location.assign(e);
-  };
   return (
-    <>
-      <div className="min-w-[100px]">
-        <p className="mb-10 italic opacity-80">
-          There are my projects currently
-        </p>
-        <p
-          className="cursor-pointer text-white/60 hover:underline"
-          onClick={() => {
-            openLink("https://coatcheck.app");
-          }}
-        >
-          coatcheck.app
-        </p>
-        <p
-          className="cursor-pointer text-white/60 hover:underline"
-          onClick={() => {
-            openLink("https://streambk.com");
-          }}
-        >
-          streambk.com
-        </p>
-      </div>
-    </>
+    <div className="min-w-[100px]">
+      {Projects.map((item, index) => (
+        <div className="mb-10 flex flex-col" key={index}>
+          <LinkBtn {...item} />
+          <p className="text-2xl font-bold">{item.title}</p>
+          <p className="mb-4 opacity-50">{item.description}</p>
+          {item?.images_url && (
+            <Image
+              src={item.images_url}
+              height={200}
+              width={200}
+              className="w-fukl h-full rounded-lg"
+              alt={item.title + "image"}
+            />
+          )}
+        </div>
+      ))}
+    </div>
   );
 };
 
