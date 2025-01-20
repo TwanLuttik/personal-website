@@ -40,7 +40,7 @@ export default function ProjectsPhone({ onBack }: ProjectsPhoneProps) {
       animate={{ opacity: 1, rotateY: 0, scale: 1 }}
       exit={{ opacity: 0, rotateY: 180, scale: 0.9 }}
       transition={{ type: "spring", stiffness: 200, damping: 25 }}
-      className="relative w-full max-w-[390px] h-[844px] bg-black rounded-[28px] overflow-hidden shadow-2xl border border-zinc-800"
+      className="relative w-full max-w-[390px] h-[844px] "
     >
       {/* Top Status Bar */}
       <PhoneHeader sticky={false} />
@@ -63,7 +63,7 @@ export default function ProjectsPhone({ onBack }: ProjectsPhoneProps) {
       </div>
 
       {/* Projects List */}
-      <div className="px-6 pb-6 overflow-y-auto h-[calc(100%-120px)]">
+      <div className="pb-6 overflow-y-hidden h-[calc(100%-120px)]">
         <div className="space-y-6">
           {projects.map((project, index) => (
             <motion.a

@@ -3,9 +3,6 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import {
-  BsHouseDoor,
-  BsSearch,
-  BsGear,
   BsGithub,
   BsGeoAlt,
   BsTwitterX,
@@ -13,11 +10,12 @@ import {
   BsInstagram,
 } from "react-icons/bs";
 import PhoneHeader from "@/app/parts/phone-header";
+import { RiHome3Fill } from "react-icons/ri";
+import { PiProjectorScreenBold } from "react-icons/pi";
 
 const navItems = [
-  { icon: BsHouseDoor, label: "Home" },
-  { icon: BsSearch, label: "Search" },
-  { icon: BsGear, label: "Settings" },
+  { icon: RiHome3Fill, label: "Home" },
+  { icon: PiProjectorScreenBold, label: "Projects" },
 ];
 
 const socialLinks = [
@@ -70,7 +68,7 @@ export default function Phone({
                 initial={{ opacity: 0, y: 20, scale: 0.95 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ delay: 0.2, duration: 0.4 }}
-                className="bg-[#1F1F1F] backdrop-blur-md rounded-2xl overflow-hidden"
+                className="bg-[#1F1F1F] rounded-2xl overflow-hidden border border-zinc-700/50"
               >
                 <div className="relative h-40 bg-[#1F1F1F]">
                   <Image
@@ -82,15 +80,15 @@ export default function Phone({
                   {/* Pulsing Location Dot */}
                   <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
                     <div className="relative">
-                      <div className="absolute w-4 h-4 bg-blue-500/20 rounded-full animate-ping" />
+                      <div className="absolute w-4 h-4 -left-0.5 -top-0.5 bg-blue-500/20 rounded-full animate-ping" />
                       <div
-                        className="absolute w-6 h-6 bg-blue-500/20 rounded-full animate-ping"
+                        className="absolute w-8 h-8 -left-2.5 -top-2.5 bg-blue-500/20 rounded-full animate-ping"
                         style={{ animationDelay: "0.2s" }}
                       />
                       <div className="relative w-3 h-3 bg-blue-500 rounded-full shadow-lg" />
                     </div>
                   </div>
-                  <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
+                  <div className="absolute bottom-0 left-0 right-0 p-2.5 bg-gradient-to-t from-black/70 to-transparent">
                     <div className="flex items-center gap-2">
                       <BsGeoAlt className="text-blue-400" />
                       <span className="text-white font-medium">
@@ -185,28 +183,20 @@ export default function Phone({
 
         {/* Navigation Bar */}
         <div className="relative px-0 pb-8">
-          <div className="bg-[#1F1F1F] backdrop-blur-xl shadow-2xl rounded-2xl items-center flex flex-row justify-center px-6 py-3 border border-zinc-800/50">
+          <div className="bg-[#1F1F1F] backdrop-blur-xl shadow-2xl rounded-2xl items-center flex flex-row justify-center px-6 py-3 border border-zinc-700/50">
             <div className="flex items-center gap-8">
-              {navItems.map((item, index) => (
+              {navItems.map((item) => (
                 <motion.button
                   key={item.label}
                   onClick={() => {
-                    if (item.label === "Search") return;
-                    if (item.label === "Settings") onShowProjects();
+                    if (item.label === "Projects") onShowProjects()
                   }}
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
-                  transition={{
-                    delay: 1 + index * 0.1,
-                    duration: 0.2,
-                    type: "spring",
-                    stiffness: 300,
-                  }}
                   className="flex flex-col items-center gap-1 text-zinc-400 hover:text-white transition-all"
                 >
-                  <item.icon className="w-5 h-5" />
+                  <item.icon className="w-4 h-4" />
                   <span className="text-[10px] font-medium">{item.label}</span>
                 </motion.button>
               ))}

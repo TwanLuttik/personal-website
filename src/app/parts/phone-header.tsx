@@ -40,7 +40,7 @@ export default function PhoneHeader({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.3 }}
-      className={`mt-1 w-full bg-[#1F1F1F] rounded-full z-30 px-8 py-3 flex items-center justify-between ${className}`}
+      className={`mt-1 w-full bg-[#1F1F1F] rounded-full z-30 px-8 py-3 flex border border-zinc-700/50 items-center justify-between ${className}`}
     >
       <div className="flex items-center gap-2">
         {showTime && (
