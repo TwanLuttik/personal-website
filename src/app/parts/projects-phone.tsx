@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { BsArrowLeft, BsGithub } from "react-icons/bs";
-import { useState, useEffect } from "react";
 import PhoneHeader from "@/app/parts/phone-header";
 
 const projects = [
@@ -34,23 +33,6 @@ interface ProjectsPhoneProps {
 }
 
 export default function ProjectsPhone({ onBack }: ProjectsPhoneProps) {
-  const [time, setTime] = useState("");
-
-  useEffect(() => {
-    const updateTime = () => {
-      const vancouverTime = new Date().toLocaleTimeString("en-US", {
-        timeZone: "America/Vancouver",
-        hour12: false,
-        hour: "2-digit",
-        minute: "2-digit",
-      });
-      setTime(vancouverTime);
-    };
-
-    updateTime();
-    const interval = setInterval(updateTime, 1000);
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <motion.div

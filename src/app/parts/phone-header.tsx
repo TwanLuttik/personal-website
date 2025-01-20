@@ -16,7 +16,6 @@ export default function PhoneHeader({
   showTime = true,
   showLocation = true,
   showBattery = true,
-  sticky = true,
 }: PhoneHeaderProps) {
   const [time, setTime] = useState("");
 

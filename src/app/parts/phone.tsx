@@ -8,13 +8,10 @@ import {
   BsGear,
   BsGithub,
   BsGeoAlt,
-  BsArrowLeft,
   BsTwitterX,
   BsLinkedin,
   BsInstagram,
-  BsClock,
 } from "react-icons/bs";
-import { useState } from "react";
 import PhoneHeader from "@/app/parts/phone-header";
 
 const navItems = [
@@ -131,7 +128,7 @@ export default function Phone({
                 className="bg-[#1F1F1F] rounded-2xl p-4 border border-zinc-700/50"
               >
                 <div className="grid grid-cols-2 gap-3">
-                  {socialLinks.map((link, index) => (
+                  {socialLinks.map((link) => (
                     <motion.a
                       key={link.label}
                       href={link.url}
