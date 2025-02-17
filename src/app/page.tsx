@@ -68,7 +68,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="px-4 py-2 bg-gray-200/50 hover:bg-gray-200 dark:bg-white/5 dark:hover:bg-white/10 rounded-md transition-colors flex items-center gap-2"
               >
-                <link.icon className="w-5 h-5" />
+                <link.icon className="w-4 h-4" />
                 {link.name}
               </a>
             ))}
