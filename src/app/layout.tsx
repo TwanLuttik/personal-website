@@ -3,7 +3,7 @@ import { Merriweather_Sans } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { FooterCreds } from "./parts/footer-creds";
-
+import PlausibleProvider from "next-plausible";
 const MW = Merriweather_Sans({
   subsets: ['latin'],
   variable: '--merri-weather',
@@ -26,6 +26,7 @@ export default function RootLayout({
       <body
         className={`${MW.variable} font-serif bg-white dark:bg-[#080d08] text-black dark:text-white`}
       >
+         <PlausibleProvider domain="twanluttik.com">
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -35,6 +36,7 @@ export default function RootLayout({
           {children}
           <FooterCreds />
         </ThemeProvider>
+        </PlausibleProvider>
       </body>
     </html>
   );
