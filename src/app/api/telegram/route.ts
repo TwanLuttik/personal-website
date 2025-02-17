@@ -1,6 +1,10 @@
 import { NextResponse } from 'next/server';
 
-const token = process.env.BOT_TOKEN
+if (!process.env.BOT_TOKEN || !process.env.CHAT_ID) {
+  throw new Error('Missing required environment variables BOT_TOKEN or CHAT_ID');
+}
+
+const token = process.env.BOT_TOKEN;
 const chatId = process.env.CHAT_ID;
 
 // Route Segment Config
