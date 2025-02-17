@@ -1,96 +1,124 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
-import { FaInstagram, FaLinkedin } from "react-icons/fa";
+import { AnimatePresence } from "framer-motion";
+import { TelegramStatus } from "@/components/TelegramStatus";
+import dayjs from "dayjs";
+import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 
-const SocialIcon = ({ href, children }: { href: string; children: React.ReactNode }) => (
-  <motion.a
-    href={href}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="hover:scale-125 transition-transform duration-200 ease-out"
-    whileHover={{ y: -2 }}
-    whileTap={{ scale: 0.95 }}
-  >
-    {children}
-  </motion.a>
-);
+const projects = [
+  {
+    name: "CoatCheck App",
+    description: "Digital coat check system for venues and events",
+    url: "https://coatcheck.app",
+  },
+  {
+    name: "RavePort App",
+    description: "Event discovery and community platform for ravers",
+    url: "https://raveport.net",
+  },
+];
 
-const Card = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <div className="relative">
-      {/* Fixed background container */}
-      <div className="absolute inset-0 rounded-[18px] overflow-hidden">
-        {/* Fixed background image */}
-        <div
-          className="absolute inset-0 -z-30 opacity-40"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2387d087' fill-opacity='0.15'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-            backgroundSize: '60px 60px',
-          }}
-        />
-
-        {/* Static gradient background */}
-        <div
-          className="absolute inset-0 -z-20"
-          style={{
-            background: `
-              radial-gradient(circle at 50% 50%, rgba(135, 208, 135, 0.15) 0%, transparent 50%),
-              radial-gradient(circle at 0% 0%, rgba(135, 208, 135, 0.1) 0%, transparent 50%),
-              radial-gradient(circle at 100% 100%, rgba(135, 208, 135, 0.1) 0%, transparent 50%)
-            `
-          }}
-        />
-
-        {/* Static mesh grid */}
-        <div
-          className="absolute inset-0 -z-10 opacity-30"
-          style={{
-            backgroundImage: `
-              linear-gradient(rgba(135, 208, 135, 0.1) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(135, 208, 135, 0.1) 1px, transparent 1px)
-            `,
-            backgroundSize: '20px 20px'
-          }}
-        />
-      </div>
-
-      {/* Card container */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="bg-[#101a10]/60 text-[#87d087] border border-[#264724] p-5 rounded-[18px]
-                  relative backdrop-blur-md shadow-xl"
-      >
-        <div className="relative z-10">
-          {children}
-        </div>
-      </motion.div>
-    </div>
-  );
-};
+const socialLinks = [
+  {
+    name: "GitHub",
+    url: "https://github.com/TwanLuttik",
+    icon: FaGithub,
+  },
+  {
+    name: "LinkedIn",
+    url: "https://linkedin.com/in/twanluttik",
+    icon: FaLinkedin,
+  },
+  {
+    name: "Twitter",
+    url: "https://twitter.com/twanluttik",
+    icon: FaXTwitter,
+  },
+];
 
 export default function Home() {
   return (
-    <div className="min-h-screen w-full p-4 md:p-8 relative overflow-hidden bg-[#080d08]">
-      <div className="max-w-[420px] h-[844px] mx-auto items-center space-y-2.5">
-        <AnimatePresence mode="wait">
-          <Card>
-            <p className="tracking-tight text-xl mb-4">Twan Luttik</p>
-            <div className="flex flex-row items-center gap-x-4 justify-center">
-              <SocialIcon href="https://instagram.com/yourusername">
-                <FaInstagram color="#dcf7dc" size={22} className="hover:text-[#E1306C] transition-colors duration-300" />
-              </SocialIcon>
-              <SocialIcon href="https://twitter.com/yourusername">
-                <FaXTwitter color="#dcf7dc" size={22} className="hover:text-[#1DA1F2] transition-colors duration-300" />
-              </SocialIcon>
-              <SocialIcon href="https://linkedin.com/in/yourusername">
-                <FaLinkedin color="#dcf7dc" size={22} className="hover:text-[#0077B5] transition-colors duration-300" />
-              </SocialIcon>
-            </div>
-          </Card>
-        </AnimatePresence>
+    <div className="min-h-screen w-full p-4 md:p-8 relative overflow-hidden">
+      <div className="max-w-[600px] mx-auto space-y-8">
+        {/* Status Section */}
+        <section className="bg-gray-50 dark:bg-black/20 p-4 rounded-lg border border-gray-200 dark:border-white/10">
+          <div className="mb-2 text-sm text-gray-600 dark:text-white/60">
+            Current Status
+          </div>
+            <TelegramStatus />
+          <div className="mt-2 text-xs text-gray-500 dark:text-white/40">
+            Last updated: {dayjs().format("MMMM D, YYYY [at] h:mm A")}
+          </div>
+        </section>
+
+        {/* Matrix Separator */}
+        <div className="h-px bg-gradient-to-r from-transparent via-gray-200 dark:via-white/20 to-transparent" />
+
+        {/* Social Links Section */}
+        <section className="bg-gray-50 dark:bg-black/20 p-4 rounded-lg border border-gray-200 dark:border-white/10">
+          <h2 className="text-lg font-medium mb-4 text-gray-900 dark:text-white/90">
+            Connect with me
+          </h2>
+          <div className="flex flex-wrap gap-3">
+            {socialLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 bg-gray-200/50 hover:bg-gray-200 dark:bg-white/5 dark:hover:bg-white/10 rounded-md transition-colors flex items-center gap-2"
+              >
+                <link.icon className="w-5 h-5" />
+                {link.name}
+              </a>
+            ))}
+          </div>
+        </section>
+
+        {/* Matrix Separator */}
+        <div className="h-px bg-gradient-to-r from-transparent via-gray-200 dark:via-white/20 to-transparent" />
+
+        {/* Projects Section */}
+        <section className="bg-gray-50 dark:bg-black/20 p-4 rounded-lg border border-gray-200 dark:border-white/10">
+          <h2 className="text-lg font-medium mb-4 text-gray-900 dark:text-white/90">
+            Projects
+          </h2>
+          <div className="space-y-4">
+            {projects.map((project) => (
+              <a
+                key={project.name}
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block p-4 bg-gray-200/50 hover:bg-gray-200 dark:bg-white/5 dark:hover:bg-white/10 rounded-md transition-colors"
+              >
+                <h3 className="font-medium">{project.name}</h3>
+                <p className="text-sm text-gray-600 dark:text-white/60 mt-1">
+                  {project.description}
+                </p>
+              </a>
+            ))}
+          </div>
+        </section>
+
+        {/* Matrix Separator */}
+        <div className="h-px bg-gradient-to-r from-transparent via-gray-200 dark:via-white/20 to-transparent" />
+
+        {/* Booking Section */}
+        <section className="bg-gray-50 dark:bg-black/20 p-4 rounded-lg border border-gray-200 dark:border-white/10">
+          <h2 className="text-lg font-medium mb-4 text-gray-900 dark:text-white/90">
+            Schedule a Meeting
+          </h2>
+          <a
+            href="https://cal.com/twanluttik"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block px-6 py-3 bg-gray-200/50 hover:bg-gray-200 dark:bg-white/5 dark:hover:bg-white/10 rounded-md transition-colors text-center w-full"
+          >
+            Book a time with me
+          </a>
+        </section>
       </div>
     </div>
   );
