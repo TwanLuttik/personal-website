@@ -1,8 +1,7 @@
-import TelegramBot from 'node-telegram-bot-api';
 import { NextResponse } from 'next/server';
 
-const token = '7691810241:AAH9Fj80hCK0vTN5hPMsqc4DHy_Thh0Fzxk';
-const chatId = '-4695123639';
+const token = process.env.BOT_TOKEN
+const chatId = process.env.CHAT_ID;
 
 // Route Segment Config
 export const revalidate = 3600; // revalidate every hour

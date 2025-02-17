@@ -18,7 +18,8 @@ export function TelegramStatus() {
         } else {
           setError(true);
         }
-      } catch (err) {
+      } catch (err: any) {
+        console.log(err)
         setError(true);
       }
     };

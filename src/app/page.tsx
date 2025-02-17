@@ -1,9 +1,8 @@
 "use client";
 
-import { AnimatePresence } from "framer-motion";
 import { TelegramStatus } from "@/components/TelegramStatus";
 import dayjs from "dayjs";
-import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 
 const projects = [
