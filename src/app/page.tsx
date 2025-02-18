@@ -1,7 +1,6 @@
 "use client";
 
 import { TelegramStatus } from "@/components/TelegramStatus";
-import dayjs from "dayjs";
 import { useEffect, useState } from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
