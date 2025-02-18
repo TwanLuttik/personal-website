@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { telegramState } from './state';
 
 if (!process.env.BOT_TOKEN || !process.env.CHAT_ID) {
   throw new Error('Missing required environment variables BOT_TOKEN or CHAT_ID');
@@ -8,54 +9,69 @@ const token = process.env.BOT_TOKEN;
 const chatId = process.env.CHAT_ID;
 
 // Route Segment Config
-export const revalidate = 3600; // revalidate every hour
+export const revalidate = 0; // Disable cache for real-time updates
 
 export async function GET() {
   try {
+    // Get the current state
+    const state = telegramState.getState();
+    
     // Get the chat info
     const chatResponse = await fetch(
       `https://api.telegram.org/bot${token}/getChat?chat_id=${chatId}`,
-      { next: { revalidate: 3600 } } // 1 hour cache at the fetch level
+      { cache: 'no-store' } // Disable cache for real-time updates
     );
     const chatData = await chatResponse.json();
-    
-    if (!chatData.ok) {
-      throw new Error('Failed to get chat info');
-    }
 
-    // Get updates with specific filters
-    const updatesResponse = await fetch(
-      `https://api.telegram.org/bot${token}/getUpdates?offset=-1&allowed_updates=["message","channel_post","edited_message","edited_channel_post"]`,
-      { next: { revalidate: 3600 } } // 1 hour cache at the fetch level
-    );
-    const updatesData = await updatesResponse.json();
-
-    let lastMessage = 'No messages found';
-    if (updatesData.ok && updatesData.result.length > 0) {
-      const update = updatesData.result[0];
-      const messageObj = 
-        update.message || 
-        update.channel_post || 
-        update.edited_message || 
-        update.edited_channel_post;
-
-      if (messageObj?.from?.username === 'twanluttik' && messageObj.text) {
-        lastMessage = messageObj.text;
-      }
-    }
-
-    return NextResponse.json(
-      { 
-        status: 'success', 
-        message: lastMessage,
-        channelTitle: chatData.result.title 
-      }
-    );
+    return NextResponse.json({
+      ...chatData,
+      state, // Include our local state in the response
+    });
   } catch (error) {
-    console.error('Error fetching Telegram message:', error);
-    return NextResponse.json(
-      { status: 'error', message: 'Failed to fetch message' },
-      { status: 500 }
-    );
+    console.error('Error fetching Telegram chat:', error);
+    return NextResponse.json({ error: 'Failed to fetch chat info' }, { status: 500 });
+  }
+}
+
+// Handle incoming webhook updates from Telegram
+export async function POST(request: Request) {
+  try {
+    const update = await request.json();
+    
+    // Check if it's a message
+    if (update.message && update.message.from) {
+      const message = update.message;
+      const username = message.from.username;
+
+      // Only process messages from twanluttk
+      if (username === 'twanluttk') {
+        // Update our local state
+        telegramState.updateState({
+          lastMessage: message.text,
+          status: 'online',
+          lastActivity: `Last message: ${message.text}`,
+        });
+        
+        // Optional: Send a response back
+        await fetch(
+          `https://api.telegram.org/bot${token}/sendMessage`,
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              chat_id: chatId,
+              text: `Received your message: ${message.text}`,
+            }),
+          }
+        );
+      }
+    }
+
+    return NextResponse.json({ ok: true });
+  } catch (error) {
+    console.error('Error processing webhook:', error);
+    return NextResponse.json({ error: 'Failed to process webhook' }, { status: 500 });
   }
 }
