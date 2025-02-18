@@ -1,7 +1,7 @@
 interface TelegramState {
   lastMessage: string;
   lastUpdateTime: string;
-  status: 'online' | 'offline' | 'away';
+  status: "online" | "offline" | "away";
   lastActivity: string;
 }
 
@@ -11,10 +11,10 @@ class TelegramStateManager {
 
   private constructor() {
     this.state = {
-      lastMessage: '',
+      lastMessage: "",
       lastUpdateTime: new Date().toISOString(),
-      status: 'offline',
-      lastActivity: 'No recent activity',
+      status: "offline",
+      lastActivity: "No recent activity",
     };
   }
 
@@ -37,7 +37,7 @@ class TelegramStateManager {
     return { ...this.state };
   }
 
-  public updateStatus(status: TelegramState['status']) {
+  public updateStatus(status: TelegramState["status"]) {
     this.state.status = status;
     this.state.lastUpdateTime = new Date().toISOString();
   }

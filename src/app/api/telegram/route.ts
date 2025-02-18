@@ -15,18 +15,7 @@ export async function GET() {
   try {
     // Get the current state
     const state = telegramState.getState();
-    
-    // Get the chat info
-    const chatResponse = await fetch(
-      `https://api.telegram.org/bot${token}/getChat?chat_id=${chatId}`,
-      { cache: 'no-store' } // Disable cache for real-time updates
-    );
-    const chatData = await chatResponse.json();
-
-    return NextResponse.json({
-      ...chatData,
-      state, // Include our local state in the response
-    });
+    return NextResponse.json({ state });
   } catch (error) {
     console.error('Error fetching Telegram chat:', error);
     return NextResponse.json({ error: 'Failed to fetch chat info' }, { status: 500 });
@@ -37,36 +26,36 @@ export async function GET() {
 export async function POST(request: Request) {
   try {
     const update = await request.json();
+    console.log('Received update:', JSON.stringify(update));
     
-    // Check if it's a message
-    if (update.message && update.message.from) {
-      const message = update.message;
-      const username = message.from.username;
+    // Check if it's a message with text
+    if (update.message?.text && update.message.from?.username === 'twanluttik') {
+      const { message } = update;
+      const { text, date } = message;
 
-      // Only process messages from twanluttk
-      if (username === 'twanluttk') {
-        // Update our local state
-        telegramState.updateState({
-          lastMessage: message.text,
-          status: 'online',
-          lastActivity: `Last message: ${message.text}`,
-        });
-        
-        // Optional: Send a response back
-        await fetch(
-          `https://api.telegram.org/bot${token}/sendMessage`,
-          {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              chat_id: chatId,
-              text: `Received your message: ${message.text}`,
-            }),
-          }
-        );
-      }
+      // Update our local state
+      telegramState.updateState({
+        lastMessage: text,
+        status: 'online',
+        lastActivity: `Message sent at ${new Date(date * 1000).toLocaleString()}`,
+      });
+      
+      console.log('Updated state:', telegramState.getState());
+      
+      // Send a response back
+      await fetch(
+        `https://api.telegram.org/bot${token}/sendMessage`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            chat_id: chatId,
+            text: `Received your message: ${text}`,
+          }),
+        }
+      );
     }
 
     return NextResponse.json({ ok: true });
