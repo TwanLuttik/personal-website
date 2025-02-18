@@ -9,7 +9,27 @@ interface TelegramState {
   lastActivity: string;
 }
 
-export function TelegramStatus() {
+interface TelegramStatusProps {
+  state: TelegramState | null;
+  error: boolean;
+}
+
+export function TelegramStatus({ state, error }: TelegramStatusProps) {
+  const displayMessage = state?.lastMessage || (error ? "Failed to load status" : "Loading...");
+
+  return (
+    <div className="text-black dark:text-white border bg-neutral-100 dark:bg-neutral-900 inline-flex items-center px-3 py-1 rounded-full text-sm font-medium">
+      <div
+        className={`w-2 h-2 rounded-full mr-2 ${
+          error ? "bg-red-500" : state?.status === "online" ? "bg-green-500" : "bg-yellow-500"
+        }`}
+      />
+      <span>{displayMessage}</span>
+    </div>
+  );
+}
+
+export function TelegramStatusContainer() {
   const [state, setState] = useState<TelegramState | null>(null);
   const [error, setError] = useState<boolean>(false);
 
@@ -37,16 +57,5 @@ export function TelegramStatus() {
     return () => clearInterval(interval);
   }, []);
 
-  const displayMessage = state?.lastMessage || (error ? "Failed to load status" : "Loading...");
-
-  return (
-    <div className="text-black dark:text-white border bg-neutral-100 dark:bg-neutral-900 inline-flex items-center px-3 py-1 rounded-full text-sm font-medium">
-      <div
-        className={`w-2 h-2 rounded-full mr-2 ${
-          error ? "bg-red-500" : state?.status === "online" ? "bg-green-500" : "bg-yellow-500"
-        }`}
-      />
-      <span>{displayMessage}</span>
-    </div>
-  );
+  return <TelegramStatus state={state} error={error} />;
 }

@@ -2,8 +2,16 @@
 
 import { TelegramStatus } from "@/components/TelegramStatus";
 import dayjs from "dayjs";
+import { useEffect, useState } from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+
+interface TelegramState {
+  lastMessage: string;
+  lastUpdateTime: string;
+  status: "online" | "offline" | "away";
+  lastActivity: string;
+}
 
 const projects = [
   {
@@ -37,6 +45,33 @@ const socialLinks = [
 ];
 
 export default function Home() {
+  const [state, setState] = useState<TelegramState | null>(null);
+  const [error, setError] = useState<boolean>(false);
+
+  useEffect(() => {
+    const fetchMessage = async () => {
+      try {
+        const response = await fetch("/api/telegram");
+        const data = await response.json();
+
+        if (data.state) {
+          setState(data.state);
+          setError(false);
+        } else {
+          setError(true);
+        }
+      } catch (err: unknown) {
+        console.log(err);
+        setError(true);
+      }
+    };
+
+    fetchMessage();
+    // Refresh every 5 minutes
+    const interval = setInterval(fetchMessage, 5 * 60 * 1000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="min-h-screen w-full p-4 md:p-8 relative overflow-hidden">
       <div className="max-w-[600px] mx-auto space-y-8">
@@ -45,9 +80,9 @@ export default function Home() {
           <div className="mb-2 text-sm text-gray-600 dark:text-white/60">
             Current Status
           </div>
-            <TelegramStatus />
+          <TelegramStatus state={state} error={error} />
           <div className="mt-2 text-xs text-gray-500 dark:text-white/40">
-            Last updated: {dayjs().format("MMMM D, YYYY [at] h:mm A")}
+            Last updated: {state ? new Date(state.lastUpdateTime).toLocaleString() : "Never"}
           </div>
         </section>
 
