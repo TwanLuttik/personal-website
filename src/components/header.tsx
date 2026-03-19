@@ -13,6 +13,9 @@ export const Header = () => {
         <Link href="/twan-de-burger">
           <p className="font-semibold hover:opacity-50 transition-opacity active:opacity-30">Twan de Burger</p>
         </Link>
+        <Link href="/setup">
+          <p className="font-semibold hover:opacity-50 transition-opacity active:opacity-30">Work Setup</p>
+        </Link>
       </div>
     </div>
   );
