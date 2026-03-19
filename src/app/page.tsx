@@ -12,6 +12,11 @@ const projectImages = [
   { src: "/ollama-chat.png", title: "ollama-chat-gui" },
 ];
 
+const sponsoredPeople = [
+  { name: "Marc Rousavy", github: "mrousavy", url: "https://github.com/mrousavy", avatar: "https://avatars.githubusercontent.com/u/15199031?v=4" },
+  { name: "Theo Browne", github: "t3dotgg", url: "https://github.com/t3dotgg", avatar: "https://avatars.githubusercontent.com/u/6751787?v=4" },
+];
+
 export default function Home() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -30,7 +35,7 @@ export default function Home() {
           <div className="flex flex-col gap-6 flex-1">
             <h1 className="font-bold text-2xl">Hi, I&rsquo;m Twan Luttik</h1>
             <div className="flex flex-col gap-3">
-              <p className="text-lg text-neutral-200">I build mobile apps (React Native) and web apps (Next.js). Gezelligheid in code, hustle in spirit.</p>
+              <p className="text-lg text-neutral-200">I build mobile apps (React Native) and web apps (Next.js). I enjoy the startup life & the work ethic mindset.</p>
               <div className="w-fit">
                 <span className="inline-block bg-white text-black px-4 py-2 rounded-2xl text-sm font-medium">From the Netherlands 🇳🇱</span>
               </div>
@@ -102,6 +107,35 @@ export default function Home() {
             ))}
           </div>
          
+        </div>
+
+        <div className="w-full flex flex-col gap-6">
+          <h2 className="font-bold text-xl">People I&rsquo;ve Sponsored</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
+            {sponsoredPeople.map((person) => (
+              <a
+                key={person.github}
+                href={person.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 p-4 rounded-lg border border-neutral-700 hover:border-neutral-500 hover:bg-neutral-900 transition-all"
+              >
+                <div className="w-12 h-12 rounded-full shrink-0 overflow-hidden">
+                  <Image
+                    src={person.avatar}
+                    alt={person.name}
+                    width={48}
+                    height={48}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="flex flex-col gap-1">
+                  <p className="font-semibold text-white">{person.name}</p>
+                  <p className="text-sm text-neutral-400">@{person.github}</p>
+                </div>
+              </a>
+            ))}
+          </div>
         </div>
       </main>
     </div>
