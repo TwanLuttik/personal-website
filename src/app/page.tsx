@@ -19,6 +19,7 @@ const sponsoredPeople = [
 
 export default function Home() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [showTattooImage, setShowTattooImage] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -27,6 +28,13 @@ export default function Home() {
 
     return () => clearInterval(interval);
   }, []);
+
+  const handleTattooClick = () => {
+    setShowTattooImage(true);
+    setTimeout(() => {
+      setShowTattooImage(false);
+    }, 5000);
+  };
 
   return (
     <div className="flex flex-col flex-1 items-center justify-center">
@@ -57,10 +65,29 @@ export default function Home() {
               src="/twan-profile.jpg"
               alt="Twan Luttik"
               fill
-              className="object-cover"
+              className={`object-cover transition-opacity duration-300 ${showTattooImage ? "opacity-0" : "opacity-100"}`}
               priority
             />
+            <div className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${showTattooImage ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
+              <Image
+                src="/notify-tattoo.jpeg"
+                alt="First startup tattoo"
+                fill
+                className="object-contain"
+              />
+            </div>
           </div>
+        </div>
+
+        <div className="w-full flex justify-center">
+          <button
+            onMouseEnter={() => setShowTattooImage(true)}
+            onMouseLeave={() => setShowTattooImage(false)}
+            onClick={handleTattooClick}
+            className="text-sm font-medium text-white bg-neutral-800 hover:bg-neutral-700 px-4 py-2 rounded-lg transition-colors"
+          >
+            First startup tattoo
+          </button>
         </div>
 
         <div className="w-full items-center flex flex-col gap-y-4">
