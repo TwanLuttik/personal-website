@@ -31,13 +31,13 @@ export default function Home() {
             <h1 className="font-bold text-2xl">Hi, I&rsquo;m Twan Luttik</h1>
             <p className="text-lg text-neutral-200">I build mobile apps (React Native) and web apps (Next.js), I enjoy the startup life & the work ethic mindset</p>
             <div className="flex gap-4">
-              <a href="https://x.com" target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-white transition-colors" title="X">
+              <a href="https://x.com/twanluttik" target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-white transition-colors" title="X">
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" dangerouslySetInnerHTML={{ __html: siX.svg }} />
               </a>
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-white transition-colors" title="GitHub">
+              <a href="https://github.com/twanluttik" target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-white transition-colors" title="GitHub">
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" dangerouslySetInnerHTML={{ __html: siGithub.svg }} />
               </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-white transition-colors" title="LinkedIn">
+              <a href="https://linkedin.com/in/twanluttik" target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-white transition-colors" title="LinkedIn">
                 <Linkedin size={20} />
               </a>
             </div>
