@@ -130,7 +130,7 @@ export default function Home() {
         </div>
 
         <div className="w-full flex flex-col gap-6">
-          <h2 className="font-bold text-xl">People I&rsquo;ve Sponsored</h2>
+          <h2 className="font-bold text-xl">People I&rsquo;ve Sponsored on GitHub</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
             {sponsoredPeople.map((person) => (
               <a
