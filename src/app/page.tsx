@@ -61,13 +61,6 @@ export default function Home() {
             </div>
           </div>
           <div className="relative w-48 h-48 rounded-lg overflow-hidden shrink-0">
-            <Image
-              src="/twan-profile.jpg"
-              alt="Twan Luttik"
-              fill
-              className={`object-cover transition-opacity duration-300 ${showTattooImage ? "opacity-0" : "opacity-100"}`}
-              priority
-            />
             <div className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${showTattooImage ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
               <Image
                 src="/notify-tattoo.jpeg"
