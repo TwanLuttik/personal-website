@@ -128,7 +128,7 @@ export default function Projects() {
           {/* Floating Preview */}
           {hoveredProjectId && (
             <div
-              className="fixed pointer-events-none z-50"
+              className="absolute pointer-events-none z-50"
               style={{
                 left: `${mousePos.x + 20}px`,
                 top: `${mousePos.y + 20}px`,
