@@ -13,8 +13,9 @@ const projectImages = [
 ];
 
 const sponsoredPeople = [
-  { name: "Marc Rousavy", github: "mrousavy", url: "https://github.com/mrousavy", avatar: "https://avatars.githubusercontent.com/u/15199031?v=4" },
-  { name: "Theo Browne", github: "t3dotgg", url: "https://github.com/t3dotgg", avatar: "https://avatars.githubusercontent.com/u/6751787?v=4" },
+  { name: "Marc Rousavy", github: "mrousavy", url: "https://github.com/mrousavy", avatar: "https://avatars.githubusercontent.com/u/15199031?v=4", project: "react-native-vision-camera", projectUrl: "https://github.com/mrousavy/react-native-vision-camera", amount: "$20/month" },
+  { name: "Theo Browne", github: "t3dotgg", url: "https://github.com/t3dotgg", avatar: "https://avatars.githubusercontent.com/u/6751787?v=4", amount: "$20/month", active: false },
+  { name: "Gorhom", github: "gorhom", url: "https://github.com/gorhom", avatar: "https://avatars.githubusercontent.com/u/4061838?v=4", project: "react-native-bottom-sheet", projectUrl: "https://github.com/gorhom/react-native-bottom-sheet", amount: "$50 one-time" },
 ];
 
 export default function Home() {
@@ -149,9 +150,26 @@ export default function Home() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="flex flex-col gap-1">
-                  <p className="font-semibold text-white">{person.name}</p>
+                <div className="flex flex-col gap-1 flex-1">
+                  <div className="flex items-center justify-between gap-2">
+                    <p className="font-semibold text-white">{person.name}</p>
+                    <div className="flex items-center gap-2">
+                      {person.amount && <p className={`text-xs font-medium ${person.active === false ? "text-neutral-500" : "text-green-400"}`}>{person.amount}</p>}
+                      {person.active === false && <span className="text-xs px-2 py-1 bg-neutral-700 text-neutral-400 rounded">inactive</span>}
+                    </div>
+                  </div>
                   <p className="text-sm text-neutral-400">@{person.github}</p>
+                  {person.project && (
+                    <a
+                      href={person.projectUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="text-xs text-blue-400 hover:text-blue-300 transition-colors mt-1"
+                    >
+                      {person.project}
+                    </a>
+                  )}
                 </div>
               </a>
             ))}
