@@ -1,26 +1,94 @@
-"use client";
+const setupCategories = [
+  {
+    title: "Daily drivers",
+    items: [
+      {
+        name: "MacBook Pro M1 Max",
+        detail: "16-inch · 32 GB · 1 TB SSD",
+      },
+      {
+        name: "Windows laptop",
+        detail: "RTX 4060 · 13th Gen Intel Core i9-13900HX",
+      },
+      {
+        name: "iPhone 16 Pro Max",
+        detail: "Primary phone",
+      },
+      {
+        name: "Samsung S24",
+        detail: "Android device",
+      },
+      {
+        name: "iPad Pro 12.9",
+        detail: "3rd generation",
+      },
+    ],
+  },
+  {
+    title: "Desk",
+    items: [
+      {
+        name: "LG 48″ OLED 4K",
+        detail: "Main display",
+      },
+      {
+        name: "Standing desk",
+        detail: "~$1,500 · brand unknown",
+      },
+    ],
+  },
+  {
+    title: "Server & audio",
+    items: [
+      {
+        name: "Dell PowerEdge 720",
+        detail: "32 GB RAM · dual Intel Xeon 2.1 GHz · 24 cores",
+      },
+      {
+        name: "Audio-Technica AT2040",
+        detail: "With Minifuse 1 interface",
+      },
+    ],
+  },
+];
 
 export default function Setup() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center">
-      <main className="flex flex-1 w-full max-w-4xl flex-col items-start py-16 px-5">
-        <div className="flex flex-col gap-2">
-          <h1 className="font-bold text-2xl">Workstation Setup</h1>
-          <p className="text-lg text-neutral-200">Hardware and equipment.</p>
-        </div>
+    <main className="page-shell gap-10">
+      <header className="flex flex-col gap-2">
+        <p className="section-label">Gear</p>
+        <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+          Workstation setup
+        </h1>
+        <p className="max-w-xl text-base text-muted-foreground sm:text-lg">
+          Hardware and equipment I use day to day.
+        </p>
+      </header>
 
-        <ul className="w-full flex flex-col gap-3 text-neutral-300 pt-10">
-          <li>• Macbook Pro M1 Max 16-Inch, 32 GB, 1TB SSD</li>
-          <li>• LG 48 Inch OLED 4K</li>
-          <li>• 1500 Dollar Standing Desk (brand not known)</li>
-          <li>• iPhone 16 Pro Max</li>
-          <li>• Samsung S24</li>
-          <li>• iPad Pro 12.9 3rd Generation</li>
-          <li>• Dell PowerEdge 720 Server (32GB RAM, 2 Intel Xeon CPU 2.1 GHz, 24 cores)</li>
-          <li>• Windows Laptop (RTX 4060, 13th Gen Intell Core i9-13900HX )</li>
-          <li>• Audio Technica AT2040 + Minifuse 1 Interface</li>
-        </ul>
-      </main>
-    </div>
+      <div className="flex w-full flex-col gap-8">
+        {setupCategories.map((category) => (
+          <section key={category.title} className="flex flex-col gap-3">
+            <h2 className="text-sm font-medium text-muted-foreground">
+              {category.title}
+            </h2>
+            <ul className="card-surface divide-y divide-border overflow-hidden">
+              {category.items.map((item) => (
+                <li
+                  key={item.name}
+                  className="flex flex-col gap-0.5 px-4 py-3.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6 sm:px-5"
+                >
+                  <span className="font-medium text-foreground">
+                    {item.name}
+                  </span>
+                  <span className="text-sm text-muted-foreground sm:text-right">
+                    {item.detail}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
+      </div>
+    </main>
   );
 }

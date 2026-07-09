@@ -1,0 +1,590 @@
+/* Windows 95 Media Player chrome — isolated so Tailwind cannot dilute it */
+
+.win95-root {
+  --w95-face: #c0c0c0;
+  --w95-highlight: #ffffff;
+  --w95-shadow: #808080;
+  --w95-dark: #000000;
+  --w95-title: #000080;
+  --w95-title-end: #1084d0;
+  --w95-text: #000000;
+
+  /* Force light UI chrome even on dark site theme */
+  color-scheme: light;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 420px;
+  font-family: Tahoma, "MS Sans Serif", "Segoe UI", sans-serif;
+  font-size: 12px;
+  line-height: 1.2;
+  color: var(--w95-text);
+  -webkit-font-smoothing: none;
+  isolation: isolate;
+}
+
+.win95-root *,
+.win95-root *::before,
+.win95-root *::after {
+  box-sizing: border-box;
+}
+
+/* Raised outer window */
+.win95-window {
+  background: var(--w95-face);
+  padding: 2px;
+  border-top: 2px solid var(--w95-highlight);
+  border-left: 2px solid var(--w95-highlight);
+  border-right: 2px solid var(--w95-dark);
+  border-bottom: 2px solid var(--w95-dark);
+  box-shadow:
+    1px 1px 0 var(--w95-shadow) inset,
+    -1px -1px 0 var(--w95-shadow) inset;
+}
+
+/* Title bar */
+.win95-title-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  height: 22px;
+  padding: 1px 2px 1px 3px;
+  background: linear-gradient(90deg, var(--w95-title) 0%, var(--w95-title-end) 100%);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 12px;
+  user-select: none;
+}
+
+.win95-title-bar-text {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #ffffff;
+}
+
+.win95-app-icon {
+  flex: 0 0 14px;
+  width: 14px;
+  height: 14px;
+  background: #000080;
+  border: 1px solid #000;
+  box-shadow: inset 1px 1px 0 #fff;
+  background-image:
+    linear-gradient(#fff 1px, transparent 1px),
+    linear-gradient(90deg, #fff 1px, transparent 1px);
+  background-size: 3px 3px;
+}
+
+.win95-title-bar-controls {
+  display: flex;
+  flex-direction: row;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.win95-title-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 14px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: var(--w95-face);
+  color: #000;
+  border-top: 1px solid var(--w95-highlight);
+  border-left: 1px solid var(--w95-highlight);
+  border-right: 1px solid var(--w95-dark);
+  border-bottom: 1px solid var(--w95-dark);
+  box-shadow: inset -1px -1px 0 var(--w95-shadow), inset 1px 1px 0 #dfdfdf;
+  cursor: default;
+  line-height: 1;
+}
+
+.win95-title-button:active {
+  border-top: 1px solid var(--w95-dark);
+  border-left: 1px solid var(--w95-dark);
+  border-right: 1px solid var(--w95-highlight);
+  border-bottom: 1px solid var(--w95-highlight);
+  box-shadow: none;
+  padding-top: 1px;
+  padding-left: 1px;
+}
+
+.win95-icon-min {
+  display: block;
+  width: 6px;
+  height: 2px;
+  margin-top: 5px;
+  background: #000;
+}
+
+.win95-icon-max {
+  display: block;
+  width: 8px;
+  height: 7px;
+  border: 1px solid #000;
+  border-top-width: 2px;
+}
+
+.win95-icon-close {
+  position: relative;
+  display: block;
+  width: 8px;
+  height: 8px;
+}
+
+.win95-icon-close::before,
+.win95-icon-close::after {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 0;
+  width: 2px;
+  height: 8px;
+  background: #000;
+}
+
+.win95-icon-close::before {
+  transform: rotate(45deg);
+}
+
+.win95-icon-close::after {
+  transform: rotate(-45deg);
+}
+
+/* Menu bar — horizontal */
+.win95-menu-bar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 0;
+  padding: 1px 0 0;
+  background: var(--w95-face);
+  user-select: none;
+}
+
+.win95-menu-item-wrap {
+  position: relative;
+}
+
+.win95-menu-item {
+  display: inline-block;
+  border: none;
+  background: transparent;
+  padding: 3px 8px;
+  margin: 0;
+  font: inherit;
+  font-size: 12px;
+  color: #000;
+  cursor: default;
+}
+
+.win95-menu-item:hover,
+.win95-menu-item.is-open {
+  background: var(--w95-title);
+  color: #fff;
+}
+
+.win95-menu-item .underline {
+  text-decoration: underline;
+}
+
+.win95-dropdown {
+  position: absolute;
+  z-index: 40;
+  top: 100%;
+  left: 0;
+  min-width: 168px;
+  padding: 2px;
+  background: var(--w95-face);
+  border-top: 1px solid var(--w95-highlight);
+  border-left: 1px solid var(--w95-highlight);
+  border-right: 1px solid var(--w95-dark);
+  border-bottom: 1px solid var(--w95-dark);
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.35);
+}
+
+.win95-dropdown-item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: transparent;
+  padding: 4px 18px 4px 16px;
+  margin: 0;
+  font: inherit;
+  font-size: 12px;
+  color: #000;
+  cursor: default;
+  white-space: nowrap;
+}
+
+.win95-dropdown-item:hover:not(:disabled) {
+  background: var(--w95-title);
+  color: #fff;
+}
+
+.win95-dropdown-item:disabled {
+  color: #808080;
+  text-shadow: 1px 1px 0 #fff;
+}
+
+.win95-dropdown-divider {
+  height: 0;
+  margin: 3px 2px;
+  border: none;
+  border-top: 1px solid var(--w95-shadow);
+  border-bottom: 1px solid var(--w95-highlight);
+}
+
+.win95-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px 6px 6px;
+  background: var(--w95-face);
+  color: #000;
+}
+
+/* Sunken field */
+.win95-field {
+  background: #fff;
+  color: #000;
+  padding: 4px 5px;
+  border-top: 1px solid var(--w95-shadow);
+  border-left: 1px solid var(--w95-shadow);
+  border-right: 1px solid var(--w95-highlight);
+  border-bottom: 1px solid var(--w95-highlight);
+  box-shadow: inset 1px 1px 0 var(--w95-dark);
+}
+
+.win95-viewport {
+  position: relative;
+  height: 150px;
+  padding: 0;
+  overflow: hidden;
+  background: #000;
+  border-top: 2px solid var(--w95-shadow);
+  border-left: 2px solid var(--w95-shadow);
+  border-right: 2px solid var(--w95-highlight);
+  border-bottom: 2px solid var(--w95-highlight);
+}
+
+.win95-viewport canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.win95-viewport-cover {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+}
+
+.win95-viewport-cover-img {
+  position: relative;
+  width: 88px;
+  height: 88px;
+  border: 1px solid #808080;
+  box-shadow: 2px 2px 0 #000;
+  overflow: hidden;
+  background: #222;
+}
+
+.win95-track-field {
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #000;
+  background: #fff;
+}
+
+.win95-group {
+  margin: 0;
+  padding: 6px 8px 8px;
+  border: none;
+  min-inline-size: 0;
+  background: transparent;
+  box-shadow:
+    inset 1px 1px 0 var(--w95-shadow),
+    inset -1px -1px 0 var(--w95-highlight);
+}
+
+.win95-group legend {
+  padding: 0 4px;
+  font-size: 11px;
+  color: #000;
+}
+
+.win95-meta-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 6px;
+  font-size: 11px;
+  color: #000;
+}
+
+.win95-control-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.win95-label {
+  flex: 0 0 auto;
+  font-size: 11px;
+  color: #000;
+}
+
+.win95-slider-track {
+  position: relative;
+  flex: 1 1 auto;
+  height: 18px;
+  cursor: pointer;
+  background: var(--w95-face);
+  border-top: 1px solid var(--w95-shadow);
+  border-left: 1px solid var(--w95-shadow);
+  border-right: 1px solid var(--w95-highlight);
+  border-bottom: 1px solid var(--w95-highlight);
+  box-shadow: inset 1px 1px 0 var(--w95-dark);
+}
+
+.win95-slider-fill {
+  position: absolute;
+  top: 2px;
+  bottom: 2px;
+  left: 2px;
+  background: var(--w95-title);
+  pointer-events: none;
+}
+
+.win95-slider-thumb {
+  position: absolute;
+  top: 1px;
+  width: 12px;
+  height: 16px;
+  background: var(--w95-face);
+  border-top: 1px solid var(--w95-highlight);
+  border-left: 1px solid var(--w95-highlight);
+  border-right: 1px solid var(--w95-dark);
+  border-bottom: 1px solid var(--w95-dark);
+  box-shadow: inset -1px -1px 0 var(--w95-shadow);
+  pointer-events: none;
+}
+
+/* Buttons */
+.win95-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 75px;
+  height: 23px;
+  padding: 0 10px;
+  margin: 0;
+  border: none;
+  background: var(--w95-face);
+  color: #000;
+  font: inherit;
+  font-size: 12px;
+  cursor: default;
+  border-top: 1px solid var(--w95-highlight);
+  border-left: 1px solid var(--w95-highlight);
+  border-right: 1px solid var(--w95-dark);
+  border-bottom: 1px solid var(--w95-dark);
+  box-shadow: inset -1px -1px 0 var(--w95-shadow), inset 1px 1px 0 #dfdfdf;
+}
+
+.win95-btn:active:not(:disabled) {
+  border-top: 1px solid var(--w95-dark);
+  border-left: 1px solid var(--w95-dark);
+  border-right: 1px solid var(--w95-highlight);
+  border-bottom: 1px solid var(--w95-highlight);
+  box-shadow: none;
+  padding-top: 1px;
+  padding-left: 11px;
+  padding-right: 9px;
+}
+
+.win95-btn:focus-visible {
+  outline: 1px dotted #000;
+  outline-offset: -4px;
+}
+
+.win95-btn-sm {
+  min-width: 42px;
+  height: 22px;
+  padding: 0 6px;
+  font-size: 11px;
+}
+
+.win95-btn-icon {
+  min-width: 0;
+  width: 34px;
+  height: 28px;
+  padding: 0;
+}
+
+.win95-btn-icon:active:not(:disabled) {
+  padding: 1px 0 0 1px;
+}
+
+.win95-btn-play {
+  width: 46px;
+}
+
+.win95-transport {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  padding-top: 2px;
+}
+
+.win95-checkbox {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  font-size: 11px;
+  color: #000;
+  cursor: default;
+}
+
+.win95-checkbox input {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 13px;
+  height: 13px;
+  margin: 0;
+  background: #fff;
+  border-top: 1px solid var(--w95-shadow);
+  border-left: 1px solid var(--w95-shadow);
+  border-right: 1px solid var(--w95-highlight);
+  border-bottom: 1px solid var(--w95-highlight);
+  box-shadow: inset 1px 1px 0 var(--w95-dark);
+  position: relative;
+  cursor: default;
+}
+
+.win95-checkbox input:checked::after {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 0;
+  width: 3px;
+  height: 7px;
+  border: solid #000;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* Volume range — kill native styling hard */
+.win95-range {
+  -webkit-appearance: none;
+  appearance: none;
+  flex: 1 1 auto;
+  width: 100%;
+  height: 22px;
+  margin: 0;
+  background: transparent;
+  cursor: default;
+}
+
+.win95-range::-webkit-slider-runnable-track {
+  height: 6px;
+  background: var(--w95-face);
+  border-top: 1px solid var(--w95-shadow);
+  border-left: 1px solid var(--w95-shadow);
+  border-right: 1px solid var(--w95-highlight);
+  border-bottom: 1px solid var(--w95-highlight);
+  box-shadow: inset 1px 1px 0 var(--w95-dark);
+}
+
+.win95-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 22px;
+  margin-top: -9px;
+  background: var(--w95-face);
+  border-top: 1px solid var(--w95-highlight);
+  border-left: 1px solid var(--w95-highlight);
+  border-right: 1px solid var(--w95-dark);
+  border-bottom: 1px solid var(--w95-dark);
+  box-shadow: inset -1px -1px 0 var(--w95-shadow);
+  border-radius: 0;
+}
+
+.win95-range::-moz-range-track {
+  height: 6px;
+  background: var(--w95-face);
+  border-top: 1px solid var(--w95-shadow);
+  border-left: 1px solid var(--w95-shadow);
+  border-right: 1px solid var(--w95-highlight);
+  border-bottom: 1px solid var(--w95-highlight);
+}
+
+.win95-range::-moz-range-thumb {
+  width: 12px;
+  height: 22px;
+  border: none;
+  border-radius: 0;
+  background: var(--w95-face);
+  border-top: 1px solid var(--w95-highlight);
+  border-left: 1px solid var(--w95-highlight);
+  border-right: 1px solid var(--w95-dark);
+  border-bottom: 1px solid var(--w95-dark);
+  box-shadow: inset -1px -1px 0 var(--w95-shadow);
+}
+
+.win95-status-bar {
+  display: flex;
+  flex-direction: row;
+  gap: 2px;
+  margin-top: 2px;
+  padding: 2px 1px 1px;
+  background: var(--w95-face);
+}
+
+.win95-status-field {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 2px 5px;
+  font-size: 11px;
+  color: #000;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  border-top: 1px solid var(--w95-shadow);
+  border-left: 1px solid var(--w95-shadow);
+  border-right: 1px solid var(--w95-highlight);
+  border-bottom: 1px solid var(--w95-highlight);
+}
+
+.win95-status-field-sm {
+  flex: 0 0 auto;
+  min-width: 56px;
+  text-align: center;
+}
